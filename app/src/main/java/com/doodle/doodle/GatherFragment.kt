@@ -2,6 +2,7 @@ package com.doodle.doodle
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,13 @@ import android.view.ViewGroup
 /**
  * Created by SAMSUNG on 2018-01-01.
  */
-class GatherFragment: Fragment() {
+class GatherFragment: Fragment(), View.OnClickListener {
 
 
     private var FeedList : RecyclerView? = null
     private var postDatas : ArrayList<FeedList>? = null
     private var adapter : FeedAdapter? = null
+    private var manager  : GridLayoutManager? = GridLayoutManager(context, 2)
 
 
 
@@ -28,7 +30,11 @@ class GatherFragment: Fragment() {
         }
 
 
+        FeedList?.layoutManager = manager
         FeedList = v.findViewById(R.id.feed_recyclerview)
+
+
+
 
         postDatas = ArrayList<FeedList>()
         postDatas!!.add(FeedList(R.drawable.kko))
@@ -45,7 +51,7 @@ class GatherFragment: Fragment() {
         postDatas!!.add(FeedList(R.drawable.e))
 
         adapter = FeedAdapter(postDatas!!)
-        //adapter!!.setOnItemClickListener(this)
+        adapter!!.setOnItemClickListener(this)
         FeedList!!.adapter = adapter
 
 
@@ -53,6 +59,24 @@ class GatherFragment: Fragment() {
 
 
         return v
+
+    }
+
+    override fun onClick(v: View?) {
+        val idx : Int = FeedList!!.getChildAdapterPosition(v)
+
+
+        //val name : String? = postDatas!!.get(idx).pocketmonName
+        //val type : String? = pocketmonDatas!!.get(idx).pocketmonType
+        //val pro : Int? = pocketmonDatas!!.get(idx).pocketmonImage
+
+        //val intent = Intent(applicationContext, Main3Activity::class.java)
+
+        //intent.putExtra("pro", pro)
+        //intent.putExtra("type", type)
+        //intent.putExtra("name", name)
+        //startActivity(intent)
+
 
     }
 

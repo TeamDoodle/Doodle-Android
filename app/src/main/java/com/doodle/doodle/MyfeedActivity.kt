@@ -8,6 +8,8 @@ import kotlinx.android.synthetic.main.activity_myfeed.*
 
 class MyfeedActivity : AppCompatActivity() ,View.OnClickListener {
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_myfeed)
@@ -33,7 +35,8 @@ class MyfeedActivity : AppCompatActivity() ,View.OnClickListener {
                 bundle.putString("title",myfeed_scrapFeed!!.text.toString())
 //                AddFragment(FirstFragment(),bundle,"first"
 //                        ,supportFragmentManager.findFragmentById(R.id.main_container))
-                ReplaceFragment(ScrapFragment(),bundle,"first")
+                myfeed_title.text = "담은 글"
+               ReplaceFragment(ScrapFragment(),bundle,"first")
             }
         }
 

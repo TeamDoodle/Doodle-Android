@@ -15,6 +15,7 @@
             android:layout_height="50dp"
             android:layout_weight="0">
             <TextView
+                android:id="@+id/myfeed_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

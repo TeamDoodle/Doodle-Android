@@ -8,10 +8,8 @@ import android.view.ViewGroup
 /**
  * Created by SAMSUNG on 2018-01-01.
  */
-class FeedAdapter(var postList : ArrayList<FeedList>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FeedAdapter(var postList : ArrayList<FeedList>) : RecyclerView.Adapter<Myfeed_ViewHolder>() {
 
-    private val HEADER:Int=0
-    private val ITEM:Int=1
 
 
     private var onItemClick : View.OnClickListener? = null
@@ -21,44 +19,23 @@ class FeedAdapter(var postList : ArrayList<FeedList>) : RecyclerView.Adapter<Rec
     }
 
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        if(holder is Myfeed_ViewHolder){
-            val myfeed_ViewHolder : Myfeed_ViewHolder=holder
-            if(position<postList!!.size) {
-                myfeed_ViewHolder!!.postImage.setImageResource(postList!!.get(position).feedImage)
-            }
-        }else if(holder is Header_ViewHolder){
-            val headerHolder : Header_ViewHolder = holder
-            headerHolder.text1.setText("Header")
-        }
+    override fun onBindViewHolder(holder: Myfeed_ViewHolder?, position: Int) {
+        holder!!.postImage.setImageResource(postList!!.get(position).feedImage)
 
     }
 
     override fun getItemCount(): Int = postList!!.size
 
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Myfeed_ViewHolder? {
 
-        if(viewType==ITEM){
             val mainView : View= LayoutInflater.from(parent!!.context)
                     .inflate(R.layout.feed_item, parent, false) //레이아웃 연결
             mainView.setOnClickListener(onItemClick)
             return Myfeed_ViewHolder(mainView)
-        }else if(viewType==HEADER){
-            val mainView : View=LayoutInflater.from(parent!!.context)
-                    .inflate(R.layout.myfeed_header,parent,false)
-            return Header_ViewHolder(mainView)
-        }
 
-        return null
     }
 
 
-    override fun getItemViewType(position: Int): Int {
-        if(position==0){
-            return HEADER
-        }
-        return ITEM
-    }
 
 }

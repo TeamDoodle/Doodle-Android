@@ -7,6 +7,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/feed_recyclerview"
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="2"
+        android:nestedScrollingEnabled="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

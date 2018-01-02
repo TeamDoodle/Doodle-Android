@@ -17,7 +17,12 @@ class GatherFragment: Fragment(), View.OnClickListener {
     private var FeedList : RecyclerView? = null
     private var postDatas : ArrayList<FeedList>? = null
     private var adapter : FeedAdapter? = null
-    private var manager  : GridLayoutManager? = GridLayoutManager(context, 2)
+
+
+
+
+
+
 
 
 
@@ -29,9 +34,8 @@ class GatherFragment: Fragment(), View.OnClickListener {
             //v!!.first_text.text = arguments.getString("title")
         }
 
-
-        FeedList?.layoutManager = manager
         FeedList = v.findViewById(R.id.feed_recyclerview)
+        onActivityCreated(savedInstanceState)
 
 
 
@@ -77,6 +81,13 @@ class GatherFragment: Fragment(), View.OnClickListener {
         //intent.putExtra("name", name)
         //startActivity(intent)
 
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        FeedList!!.layoutManager = GridLayoutManager(activity, 2)
+        FeedList!!.isNestedScrollingEnabled = false
 
     }
 

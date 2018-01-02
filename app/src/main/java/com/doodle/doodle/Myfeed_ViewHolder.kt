@@ -11,5 +11,4 @@ class Myfeed_ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
     var postImage : ImageView = itemView!!.findViewById(R.id.feedImage)
 
-
 }

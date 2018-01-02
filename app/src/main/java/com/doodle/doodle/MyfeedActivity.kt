@@ -26,8 +26,9 @@ class MyfeedActivity : AppCompatActivity() ,View.OnClickListener {
             myfeed_gatherFeed->{
                 val bundle = Bundle()
                 bundle.putString("title",myfeed_gatherFeed!!.text.toString())
-//                AddFragment(FirstFragment(),bundle,"first"
+//                AddFragment(FirstFragmㅇent(),bundle,"first"
 //                        ,supportFragmentManager.findFragmentById(R.id.main_container))
+                myfeed_title.text = "나의 글"
                 ReplaceFragment(GatherFragment(),bundle,"first")
             }
             myfeed_scrapFeed->{

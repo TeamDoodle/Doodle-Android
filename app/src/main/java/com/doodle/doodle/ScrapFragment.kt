@@ -1,5 +1,6 @@
 package com.doodle.doodle
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
@@ -10,7 +11,7 @@ import android.view.ViewGroup
 /**
  * Created by SAMSUNG on 2018-01-01.
  */
-class ScrapFragment : Fragment() {
+class ScrapFragment : Fragment(), View.OnClickListener  {
 
     private var FeedList : RecyclerView? = null
     private var postDatas : ArrayList<FeedList>? = null
@@ -44,15 +45,35 @@ class ScrapFragment : Fragment() {
         postDatas!!.add(FeedList(R.drawable.e))
         postDatas!!.add(FeedList(R.drawable.pa))
         postDatas!!.add(FeedList(R.drawable.kko))
-        postDatas!!.add(FeedList(R.drawable.e))
-        postDatas!!.add(FeedList(R.drawable.pa))
-        postDatas!!.add(FeedList(R.drawable.kko))
+
+
 
         adapter = FeedAdapter(postDatas!!)
-        //adapter!!.setOnItemClickListener(this)
+        adapter!!.setOnItemClickListener(this)
         FeedList!!.adapter = adapter
+
+
 
         return v
 
     }
+
+    override fun onClick(v: View?) {
+        val idx : Int = FeedList!!.getChildAdapterPosition(v)
+        val feedType : Int = 2
+        //val name : String? = postDatas!!.get(idx).pocketmonName
+        //val type : String? = pocketmonDatas!!.get(idx).pocketmonType
+        //val pro : Int? = pocketmonDatas!!.get(idx).pocketmonImage
+
+        val intent = Intent(activity, MyfeedBigActivity::class.java)
+
+
+        intent.putExtra("feedType", feedType)
+        //intent.putExtra("type", type)
+        //intent.putExtra("name", name)
+        startActivity(intent)
+
+
+    }
+
 }

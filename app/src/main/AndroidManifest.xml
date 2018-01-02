@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".GatherFragment"></activity>
+        <activity android:name=".MyfeedBigActivity"></activity>
     </application>
 
 </manifest>

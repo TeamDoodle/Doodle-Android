@@ -1,5 +1,6 @@
 package com.doodle.doodle
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -54,6 +55,8 @@ class GatherFragment: Fragment(), View.OnClickListener {
         postDatas!!.add(FeedList(R.drawable.pa))
         postDatas!!.add(FeedList(R.drawable.e))
 
+
+
         adapter = FeedAdapter(postDatas!!)
         adapter!!.setOnItemClickListener(this)
         FeedList!!.adapter = adapter
@@ -68,18 +71,18 @@ class GatherFragment: Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         val idx : Int = FeedList!!.getChildAdapterPosition(v)
-
+        val feedType : Int = 1
 
         //val name : String? = postDatas!!.get(idx).pocketmonName
         //val type : String? = pocketmonDatas!!.get(idx).pocketmonType
         //val pro : Int? = pocketmonDatas!!.get(idx).pocketmonImage
 
-        //val intent = Intent(applicationContext, Main3Activity::class.java)
-
+        val intent = Intent(activity, MyfeedBigActivity::class.java)
+        intent.putExtra("feedType", feedType)
         //intent.putExtra("pro", pro)
         //intent.putExtra("type", type)
         //intent.putExtra("name", name)
-        //startActivity(intent)
+        startActivity(intent)
 
 
     }

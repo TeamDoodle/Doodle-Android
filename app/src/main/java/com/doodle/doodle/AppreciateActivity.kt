@@ -19,28 +19,33 @@ class AppreciateActivity  : AppCompatActivity() , View.OnClickListener {
         week.setOnClickListener(this)
         day.setOnClickListener(this)
 
-        val bundle = Bundle()
-        ReplaceFragment(AppreciateAllFragment(),bundle,"first")
+        appreciate_viewPager.adapter = Appreciate_pageAdapter(supportFragmentManager)
+        appreciate_viewPager.setCurrentItem(0)
+
+       // val bundle = Bundle()
+       // ReplaceFragment(AppreciateAllFragment(),bundle,"first")
     }
 
     override fun onClick(v: View?) {
         when(v){    //뷰를 기준으로 구분
             all->{
-                val bundle = Bundle()
+                //val bundle = Bundle()
                 //bundle.putString("title",myfeed_gatherFeed!!.text.toString())
 //                AddFragment(FirstFragmㅇent(),bundle,"first"
 //                        ,supportFragmentManager.findFragmentById(R.id.main_container))
                 //myfeed_title.text = "나의 글"
-                ReplaceFragment(AppreciateAllFragment(),bundle,"first")
+                //ReplaceFragment(AppreciateAllFragment(),bundle,"first")
+                appreciate_viewPager.setCurrentItem(0)
             }
             week->{
-                val bundle = Bundle()
+                //val bundle = Bundle()
                 //bundle.putString("title",myfeed_scrapFeed!!.text.toString())
 //                AddFragment(FirstFragment(),bundle,"first"
 //                        ,supportFragmentManager.findFragmentById(R.id.main_container))
                 //myfeed_title.text = "담은 글"
 
-                ReplaceFragment(AppreciateAllFragment(),bundle,"first")
+                //ReplaceFragment(AppreciateWeekFragment(),bundle,"first")
+                appreciate_viewPager.setCurrentItem(1)
             }
             day->{
                 val bundle = Bundle()
@@ -50,7 +55,8 @@ class AppreciateActivity  : AppCompatActivity() , View.OnClickListener {
                 //myfeed_title.text = "담은 글"
 
                 bundle.putString("page", "day")
-                ReplaceFragment(AppreciateDayFragment(),bundle,"first")
+                appreciate_viewPager.setCurrentItem(2)
+                //ReplaceFragment(AppreciateDayFragment(),bundle,"first")
             }
         }
 
@@ -59,7 +65,7 @@ class AppreciateActivity  : AppCompatActivity() , View.OnClickListener {
         val fm=supportFragmentManager
         val transaction=fm.beginTransaction()
         fragment.arguments = bundle
-        transaction.add(R.id.appreciate_fragmentContainer,fragment,tag)
+        transaction.add(R.id.appreciate_viewPager,fragment,tag)
         transaction.commit()
 
     }
@@ -68,7 +74,7 @@ class AppreciateActivity  : AppCompatActivity() , View.OnClickListener {
         val fm=supportFragmentManager
         val transaction=fm.beginTransaction()
         fragment.arguments = bundle
-        transaction.replace(R.id.appreciate_fragmentContainer,fragment,tag)
+        transaction.replace(R.id.appreciate_viewPager,fragment,tag)
 //        transaction.addToBackStack(null)
         transaction.commit()
 

@@ -8,7 +8,8 @@ import android.view.ViewGroup
 /**
  * Created by SAMSUNG on 2018-01-01.
  */
-class FeedBigAdapter(var postList : ArrayList<FeedBigList>, var nameTag : String) : RecyclerView.Adapter<MyfeedBig_ViewHolder>() {
+class FeedBigAdapter(var postList : ArrayList<FeedBigList>, var nameTag : String,
+                                            var dayTag : String) : RecyclerView.Adapter<MyfeedBig_ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyfeedBig_ViewHolder? {
 
@@ -22,7 +23,7 @@ class FeedBigAdapter(var postList : ArrayList<FeedBigList>, var nameTag : String
 
     override fun onBindViewHolder(holder: MyfeedBig_ViewHolder?, position: Int) {
         holder!!.postBigImage.setImageResource(postList!!.get(position).postBigImage)
-        if(nameTag == "day")
+        if(dayTag == "day")
             holder!!.PostDate.visibility = View.GONE
         else
             holder!!.PostDate.setText(postList!!.get(position).postDate)

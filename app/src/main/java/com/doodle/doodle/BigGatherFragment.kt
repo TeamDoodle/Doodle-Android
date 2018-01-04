@@ -54,7 +54,7 @@ class BigGatherFragment: Fragment(), View.OnClickListener {
         postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.e, "123", 1,2,3,"a"))
 
-        adapter = FeedBigAdapter(postDatas!!, nameTag)
+        adapter = FeedBigAdapter(postDatas!!, nameTag, "")
         adapter!!.setOnItemClickListener(this)
         BigFeedList!!.adapter = adapter
 

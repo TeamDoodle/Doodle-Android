@@ -1,5 +1,6 @@
 package com.doodle.doodle
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
@@ -7,17 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+@SuppressLint("ValidFragment")
 /**
  * Created by SAMSUNG on 2018-01-04.
  */
-class AppreciateDayFragment: Fragment(), View.OnClickListener {
+class AppreciateDayFragment: Fragment, View.OnClickListener {
+
+
 
 
     private var BigFeedList : RecyclerView? = null
     private var postDatas : ArrayList<FeedBigList>? = null
     private var adapter : FeedBigAdapter? = null
     private var nameTag : String = ""
+    private var dayTag : String = ""
 
+    constructor(dayTag : String) : super(){
+        this.dayTag = dayTag
+    }
 
 
 
@@ -54,7 +62,7 @@ class AppreciateDayFragment: Fragment(), View.OnClickListener {
         postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.e, "123", 1,2,3,"a"))
 
-        adapter = FeedBigAdapter(postDatas!!, nameTag)
+        adapter = FeedBigAdapter(postDatas!!, nameTag, dayTag)
         adapter!!.setOnItemClickListener(this)
         BigFeedList!!.adapter = adapter
 

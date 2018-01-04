@@ -21,7 +21,7 @@ class SwipeViewPager : ViewPager {
             return super.onInterceptTouchEvent(ev)
         } else {
             if (MotionEventCompat.getActionMasked(ev) == MotionEvent.ACTION_MOVE) {
-
+//
             } else {
                 if (super.onInterceptTouchEvent(ev)) {
                     super.onTouchEvent(ev)

@@ -10,4 +10,5 @@ import android.widget.ImageView
 class TopAppreciateViewHolder (itemView: View?) : RecyclerView.ViewHolder(itemView){
     var Appreciate_topRate : ImageView = itemView!!.findViewById(R.id.appreciate_topRate)
     var AppreciateTop_postImage : ImageView = itemView!!.findViewById(R.id.appreciateTop_postImage)
+    //
 }

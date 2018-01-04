@@ -11,3 +11,4 @@ data class FeedBigList (
         var shareHit : Int,
         var WritingName : String
 )
+//

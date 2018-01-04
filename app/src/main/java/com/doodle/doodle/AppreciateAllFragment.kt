@@ -28,7 +28,7 @@ class AppreciateAllFragment : Fragment(), View.OnClickListener  {
         AppreciateList = v.findViewById(R.id.appreciate_recyclerview)
 
 
-
+//
 
         appreciateDatas = ArrayList<AppreciateList>()
         appreciateDatas!!.add(AppreciateList(R.drawable.kko))

@@ -23,7 +23,7 @@ class FeedAdapter(var postList : ArrayList<FeedList>) : RecyclerView.Adapter<Myf
         holder!!.postImage.setImageResource(postList!!.get(position).feedImage)
 
     }
-
+//
     override fun getItemCount(): Int = postList!!.size
 
 

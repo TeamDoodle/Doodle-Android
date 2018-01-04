@@ -9,7 +9,7 @@ import android.widget.TextView
  * Created by SAMSUNG on 2018-01-02.
  */
 class MyfeedBig_ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-
+//
     var postBigImage : ImageView = itemView!!.findViewById(R.id.feedBigImage)
     var PostDate : TextView = itemView!!.findViewById(R.id.postDate)
     var WritingName : TextView = itemView!!.findViewById(R.id.feed_big_writingName)

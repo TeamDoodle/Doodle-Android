@@ -20,7 +20,7 @@ class MyfeedActivity : AppCompatActivity() ,View.OnClickListener {
         val bundle = Bundle()
         ReplaceFragment(GatherFragment(),bundle,"first")
     }
-
+//
     override fun onClick(v: View?) {
         when(v){    //뷰를 기준으로 구분
             myfeed_gatherFeed->{

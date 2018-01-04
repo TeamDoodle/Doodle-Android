@@ -23,5 +23,6 @@ class Appreciate_pageAdapter(fm: android.support.v4.app.FragmentManager) :  Frag
 
     override fun getCount(): Int {
         return 3
+        //
     }
 }

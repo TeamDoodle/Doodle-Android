@@ -5,4 +5,5 @@ package com.doodle.doodle
  */
 data class FeedList (
         var feedImage : Int
+//
 )

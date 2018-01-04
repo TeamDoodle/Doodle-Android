@@ -5,4 +5,5 @@ package com.doodle.doodle
  */
 data class AppreciateList (
         var appreciatePostImage: Int
+//
 )

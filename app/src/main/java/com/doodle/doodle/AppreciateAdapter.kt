@@ -92,6 +92,7 @@ class AppreciateAdapter(var postList : ArrayList<AppreciateList>) : RecyclerView
             }
         }
         return AppreciateViewHolder(mainView)
+        //
     }
 
 

@@ -59,14 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--프래그먼트 하나만 만들고 번들로 값 넘겨주기
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/appreciate_fragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-        </FrameLayout>-->
+        <!--aa-->
         <com.doodle.doodle.SwipeViewPager
             android:id="@+id/appreciate_viewPager"
             android:layout_width="match_parent"

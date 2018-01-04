@@ -36,7 +36,7 @@ class BigGatherFragment: Fragment(), View.OnClickListener {
         }
 
         BigFeedList = v.findViewById(R.id.feed_big_recyclerview)
-
+//
 
 
 

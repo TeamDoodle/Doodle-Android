@@ -12,7 +12,7 @@ import android.view.ViewGroup
  */
 class AppreciateWeekFragment : Fragment(), View.OnClickListener {
 
-
+//
 
     private var AppreciateList : RecyclerView? = null
     private var appreciateDatas : ArrayList<AppreciateList>? = null

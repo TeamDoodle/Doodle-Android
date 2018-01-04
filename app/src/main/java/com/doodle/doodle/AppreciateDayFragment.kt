@@ -67,7 +67,7 @@ class AppreciateDayFragment: Fragment, View.OnClickListener {
         BigFeedList!!.adapter = adapter
 
 
-
+//
 
 
         return v

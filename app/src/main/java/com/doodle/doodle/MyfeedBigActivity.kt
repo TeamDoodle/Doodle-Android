@@ -34,7 +34,7 @@ class MyfeedBigActivity: AppCompatActivity() {
             }
         }
 
-
+//
 
     }
 

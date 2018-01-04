@@ -20,7 +20,7 @@ class FeedBigAdapter(var postList : ArrayList<FeedBigList>, var nameTag : String
         return MyfeedBig_ViewHolder(mainView)
 
     }
-
+//
     override fun onBindViewHolder(holder: MyfeedBig_ViewHolder?, position: Int) {
         holder!!.postBigImage.setImageResource(postList!!.get(position).postBigImage)
         if(dayTag == "day")

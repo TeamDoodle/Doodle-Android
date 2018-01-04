@@ -10,5 +10,5 @@ import android.widget.ImageView
 class AppreciateViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
     var Appreciate_postImage : ImageView = itemView!!.findViewById(R.id.appreciate_postImage)
-
+//
 }

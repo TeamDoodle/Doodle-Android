@@ -47,7 +47,7 @@ class ScrapFragment : Fragment(), View.OnClickListener  {
         postDatas!!.add(FeedList(R.drawable.kko))
 
 
-
+//
         adapter = FeedAdapter(postDatas!!)
         adapter!!.setOnItemClickListener(this)
         FeedList!!.adapter = adapter

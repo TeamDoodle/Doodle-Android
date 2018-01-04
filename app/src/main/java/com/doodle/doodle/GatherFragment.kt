@@ -22,7 +22,7 @@ class GatherFragment: Fragment(), View.OnClickListener {
 
 
 
-
+//
 
 
 

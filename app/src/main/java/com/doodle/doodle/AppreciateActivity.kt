@@ -65,7 +65,7 @@ class AppreciateActivity  : AppCompatActivity() , View.OnClickListener {
         val fm=supportFragmentManager
         val transaction=fm.beginTransaction()
         fragment.arguments = bundle
-        transaction.add(R.id.appreciate_viewPager,fragment,tag)
+        //transaction.add(R.id.appreciate_viewPager,fragment,tag)
         transaction.commit()
 
     }
@@ -74,7 +74,7 @@ class AppreciateActivity  : AppCompatActivity() , View.OnClickListener {
         val fm=supportFragmentManager
         val transaction=fm.beginTransaction()
         fragment.arguments = bundle
-        transaction.replace(R.id.appreciate_viewPager,fragment,tag)
+       // transaction.replace(R.id.appreciate_viewPager,fragment,tag)
 //        transaction.addToBackStack(null)
         transaction.commit()
 

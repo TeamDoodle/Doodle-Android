@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 
 /**
- * Created by SAMSUNG on 2018-01-01.
+ * Created by SAMSUNG on 2018-01-04.
  */
-class BigGatherFragment: Fragment(), View.OnClickListener {
+class AppreciateDayFragment: Fragment(), View.OnClickListener {
 
 
     private var BigFeedList : RecyclerView? = null
@@ -29,26 +29,26 @@ class BigGatherFragment: Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         onActivityCreated(savedInstanceState)
 
-        val v = inflater!!.inflate(R.layout.fragment_big_gather,container,false) //레이아웃을 붙이는 과정
+        val v = inflater!!.inflate(R.layout.fragment_appreciate,container,false) //레이아웃을 붙이는 과정
         if(arguments!=null){
             nameTag = arguments.get("page").toString()
             //v!!.first_text.text = arguments.getString("title")
         }
 
-        BigFeedList = v.findViewById(R.id.feed_big_recyclerview)
+        BigFeedList = v.findViewById(R.id.appreciate_recyclerview)
 
 
 
 
         postDatas = ArrayList<FeedBigList>()
+        postDatas!!.add(FeedBigList(R.drawable.e, "123", 1,2,3,"a"))
+        postDatas!!.add(FeedBigList(R.drawable.kko, "123", 1,2,3,"d"))
+        postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.kko, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"b"))
         postDatas!!.add(FeedBigList(R.drawable.e, "123", 1,2,3,"c"))
         postDatas!!.add(FeedBigList(R.drawable.kko, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"b"))
-        postDatas!!.add(FeedBigList(R.drawable.e, "123", 1,2,3,"a"))
-        postDatas!!.add(FeedBigList(R.drawable.kko, "123", 1,2,3,"d"))
-        postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.e, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.kko, "123", 1,2,3,"a"))
         postDatas!!.add(FeedBigList(R.drawable.pa, "123", 1,2,3,"a"))

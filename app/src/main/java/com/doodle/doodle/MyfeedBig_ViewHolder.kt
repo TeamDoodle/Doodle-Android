@@ -12,6 +12,7 @@ class MyfeedBig_ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) 
 
     var postBigImage : ImageView = itemView!!.findViewById(R.id.feedBigImage)
     var PostDate : TextView = itemView!!.findViewById(R.id.postDate)
+    var WritingName : TextView = itemView!!.findViewById(R.id.feed_big_writingName)
     var LikeHit : TextView = itemView!!.findViewById(R.id.likeHit)
     var CommentHit : TextView = itemView!!.findViewById(R.id.commentHit)
     var ShareHit : TextView = itemView!!.findViewById(R.id.shareHit)

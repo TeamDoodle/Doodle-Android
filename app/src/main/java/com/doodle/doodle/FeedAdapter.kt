@@ -27,8 +27,8 @@ class FeedAdapter(var postList : ArrayList<FeedList>) : RecyclerView.Adapter<Myf
     override fun getItemCount(): Int = postList!!.size
 
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Myfeed_ViewHolder? {
 
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Myfeed_ViewHolder? {
 
             val mainView : View= LayoutInflater.from(parent!!.context)
                     .inflate(R.layout.feed_item, parent, false) //레이아웃 연결

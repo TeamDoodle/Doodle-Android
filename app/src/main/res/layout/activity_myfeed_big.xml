@@ -36,6 +36,7 @@
                 android:descendantFocusability="beforeDescendants"
                 android:orientation="vertical">
                 <RelativeLayout
+                    android:id="@+id/myfeed_big_profile"
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
                     <ImageView

@@ -8,5 +8,6 @@ data class FeedBigList (
         var postDate : String,
         var likeHit : Int,
         var commentHit : Int,
-        var shareHit : Int
+        var shareHit : Int,
+        var WritingName : String
 )

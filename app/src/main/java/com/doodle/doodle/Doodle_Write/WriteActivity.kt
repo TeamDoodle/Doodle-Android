@@ -50,17 +50,17 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
 
         write_menu_content!!.startAnimation(animHide)
         write_menu_content!!.visibility=View.GONE
-        write_menu_top!!.animate().translationY(300F)
-
-//        사진 정방형으로
-        params=write_image_layout!!.layoutParams
-        params!!.width=resources.displayMetrics.widthPixels
-        params!!.height=params!!.width
-
-//        필터 사진 정방형으로
-        params_filter=filter!!.layoutParams
-        params_filter!!.width=resources.displayMetrics.widthPixels
-        params_filter!!.height=params_filter!!.width
+        write_menu_top!!.animate().translationY(565F)
+//
+////        사진 정방형으로
+//        params=write_image_layout!!.layoutParams
+//        params!!.width=resources.displayMetrics.widthPixels
+//        params!!.height=params!!.width
+//
+////        필터 사진 정방형으로
+//        params_filter=filter!!.layoutParams
+//        params_filter!!.width=resources.displayMetrics.widthPixels
+//        params_filter!!.height=params_filter!!.width
 
 //        params_bottom=write_menu_top!!.layoutParams
 
@@ -73,7 +73,7 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
             if(flag==true){
                 write_menu_content!!.startAnimation(animHide)
                 write_menu_content!!.visibility=View.GONE
-                write_menu_top!!.animate().translationY(360F)
+                write_menu_top!!.animate().translationY(565F)
                 flag=false
             }else{
                 write_menu_content!!.startAnimation(animShow)
@@ -157,6 +157,17 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
 
 //       완료 버튼
         write_commit.setOnClickListener {
+
+            //        사진 정방형으로
+            params=write_image_layout!!.layoutParams
+            params!!.width=resources.displayMetrics.widthPixels
+            params!!.height=params!!.width
+
+            //        필터 사진 정방형으로
+            params_filter=filter!!.layoutParams
+            params_filter!!.width=resources.displayMetrics.widthPixels
+            params_filter!!.height=params_filter!!.width
+
             write_edit.bringToFront()
             write_edit.clearFocus()
             Toast.makeText(applicationContext,"완료",Toast.LENGTH_SHORT).show()

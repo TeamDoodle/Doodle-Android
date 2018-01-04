@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignUp.SignUpActivity">
+        <activity android:name=".Doodle_Write.WriteActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".Doodle_Me.MyfeedActivity" />
-        <activity android:name=".Doodle_Write.WriteActivity" />
+        <activity android:name=".SignUp.SignUpActivity" />
         <activity android:name=".Splash.SplashActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Doodle_Me.MyfeedBigActivity" />

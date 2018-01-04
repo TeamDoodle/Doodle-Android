@@ -39,24 +39,24 @@
         android:focusable="true"
         android:id="@+id/write_image_layout"
         android:layout_width="fill_parent"
-        android:layout_height="350dp">
+        android:layout_height="330dp">
 
         <ImageView
             android:id="@+id/write_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="330dp"
             android:background="@android:color/darker_gray" />
         <ImageView
             android:id="@+id/filter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="330dp" />
         <EditText
             android:scrollHorizontally="false"
             android:hint="오늘의 배경에 글적기"
             android:id="@+id/write_edit"
             android:layout_width="300dp"
             android:textColor="#ffffff"
-            android:layout_height="match_parent"
+            android:layout_height="330dp"
             android:layout_centerInParent="true"
             android:background="@null"
             android:gravity="center"
@@ -146,8 +146,8 @@
             <RelativeLayout
                 android:visibility="gone"
                 android:id="@+id/write_filter_layout"
-                android:layout_width="360dp"
-                android:layout_height="187dp">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <SeekBar
                     android:layout_marginTop="25dp"
                     android:id="@+id/filter_seekbar"
@@ -158,9 +158,10 @@
                 <LinearLayout
                     android:layout_marginTop="22dp"
                     android:orientation="horizontal"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <HorizontalScrollView
+                        android:scrollbars="none"
                         android:layout_marginTop="22dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
@@ -362,6 +363,7 @@
                         <TextView
                             android:layout_gravity="center_vertical"
                             android:text="글씨체"
+                            android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                         <LinearLayout
@@ -371,6 +373,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <HorizontalScrollView
+                                android:scrollbars="none"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
                                 <LinearLayout
@@ -428,6 +431,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -454,6 +458,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
+                            android:textSize="12sp"
                             android:layout_gravity="center_vertical"
                             android:text="줄 간격"
                             android:layout_width="wrap_content"
@@ -480,6 +485,7 @@
                         android:background="@color/color1">
 
                         <TextView
+                            android:textSize="12sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -569,7 +575,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-        <!--배경 사진 변경-->
+        <!--배경 사진 변경 레이아웃-->
               <ScrollView
                   android:visibility="gone"
                   android:id="@+id/write_change_image_layout"

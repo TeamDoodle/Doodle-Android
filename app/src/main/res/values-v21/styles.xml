@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/maincolor</item>
+        <item name="colorPrimaryDark">@color/maincolor</item>
+        <item name="colorAccent">@color/maincolor</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/nanum_myeongjo</item>
+        <item name="android:navigationBarColor">@color/maincolor</item>
+        <item name="android:colorForeground">@color/dalbit</item>
+    </style>
+</resources>

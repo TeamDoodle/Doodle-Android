@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    tools:context=".Doodle_Me.MyfeedActivity"
+    android:background="@drawable/bgopacity"
     android:layout_height="match_parent"
-    tools:context="com.doodle.doodle.MyfeedActivity">
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <!--커스텀 액션바-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -23,12 +21,12 @@
                 android:text="나의글"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>
+        <!--커스텀 액션바 end-->
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/myfeed_scroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <!--aa-->
+            android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -143,15 +141,30 @@
                         android:textAlignment="center" />
                 </LinearLayout>
 
+                <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+                    <!--android:id="@+id/myfeed_fragmentContainer"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1">-->
 
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/myfeed_fragmentContainer"
+                <!--</FrameLayout>-->
+                <!--뷰페이저 시작-->
+                <!--<com.doodle.doodle.Doodle_Read.SwipeViewPager-->
+                    <!--android:id="@+id/myfeed_viewPager"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--&gt;-->
+
+                <!--</com.doodle.doodle.Doodle_Read.SwipeViewPager>-->
+                <!--뷰페이저 끝-->
+                <com.doodle.doodle.Doodle_Me.mySwipeViewPager
+                    android:id="@+id/myfeed_viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_height="match_parent">
 
-                </FrameLayout>
-
+                </com.doodle.doodle.Doodle_Me.mySwipeViewPager>
             </LinearLayout>
 
 
@@ -160,8 +173,4 @@
 
 
 
-    </LinearLayout>
-
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

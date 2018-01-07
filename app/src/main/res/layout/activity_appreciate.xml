@@ -3,70 +3,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.doodle.doodle.AppreciateActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/bgopacity"
+    tools:context="com.doodle.doodle.Doodle_Read.AppreciateActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="vertical">
-        <LinearLayout
+        <RelativeLayout
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="vertical">
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="감상하기" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="감상하기"
-                android:layout_gravity="center_horizontal" />
+         <ImageView
+             android:layout_marginRight="20dp"
+             android:layout_alignParentRight="true"
+             android:id="@+id/appreciate_search"
+             android:src="@drawable/search"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+        </RelativeLayout>
 
-            <TextView
-                android:id="@+id/all"
-                android:text="전체 감성"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/week"
-                android:text="주간 감성"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-
-            <TextView
-                android:id="@+id/day"
-                android:text="일일 감성"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAlignment="center"/>
-
-        </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/all"
+            android:text="전체 감성"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/week"
+            android:text="주간 감성"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/day"
+            android:text="일일 감성"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--aa-->
-        <com.doodle.doodle.SwipeViewPager
+        <!--뷰페이저 시작-->
+        <com.doodle.doodle.Doodle_Read.SwipeViewPager
             android:id="@+id/appreciate_viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             >
 
-        </com.doodle.doodle.SwipeViewPager>
+        </com.doodle.doodle.Doodle_Read.SwipeViewPager>
 
 
     </LinearLayout>

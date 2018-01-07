@@ -9,6 +9,7 @@
         <item name="windowNoTitle">true</item>
         <item name="android:fontFamily">@font/nanum_myeongjo</item>
         <item name="android:colorForeground">@color/dalbit</item>
+
     </style>
 
 </resources>

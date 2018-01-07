@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/myfeed_big_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,10 +15,15 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="208.02.01"/>
+        <ImageView
+            android:id="@+id/image_setting"
+            android:background="@mipmap/ic_launcher"
+            android:layout_alignParentRight="true"
+            android:layout_width="50dp"
+            android:layout_height="30dp" />
 
 
-
-    </LinearLayout>
+    </RelativeLayout>
     <ImageView
         android:id="@+id/feedBigImage"
         android:layout_width="match_parent"

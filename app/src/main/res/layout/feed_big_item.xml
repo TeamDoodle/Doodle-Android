@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:id="@+id/myfeed_big_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="#000000"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/postDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="2018.02.01"/>
+
+        <ImageView
+            android:id="@+id/image_setting"
+            android:background="@drawable/more"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+
+    </RelativeLayout>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:src="@drawable/mytext6"
+        android:id="@+id/feedBigImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_below="@id/myfeed_big_top"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/feedBigImage">
+        <TextView
+            android:id="@+id/big_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="공감"/>
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/big_likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="243"/>
+        <TextView
+            android:id="@+id/big_comment"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="댓글" />
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/big_commentCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="28"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/big_scrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="담아감" />
+        <TextView
+            android:id="@+id/big_scrapCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="46"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/big_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="scrap_nickname"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

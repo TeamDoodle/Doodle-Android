@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--글씨 색상-->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="maincolor">#445061</color>
+    <color name="color1">#000000</color>
+    <color name="color2">#ffffff</color>
+    <color name="color3">#ffcece</color>
+    <color name="color4">#fce0bb</color>
+    <color name="color5">#fff8c4</color>
+    <color name="color6">#d4ffc4</color>
+    <color name="color7">#c1fffa</color>
+    <color name="color8">#cae2ff</color>
+    <color name="color9">#f0bfff</color>
+    <color name="color10">#212121</color>
+
+    <!--필터 색상-->
+    <color name="angae">#ffffff</color>
+    <color name="dalbit">#000000</color>
+    <color name="saebyuk">#140a6c</color>
+    <color name="latte">#ffdd00</color>
+    <color name="noel">#ff0000</color>
+
 </resources>

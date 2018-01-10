@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/full_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bgopacity"
+    tools:context="com.doodle.doodle.Doodle_Write.WriteActivity">
+    <!--커스텀 액션바-->
+    <LinearLayout
+        android:background="@drawable/bgopacity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#445061"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="글 작성" />
+
+            </RelativeLayout>
+
+           <RelativeLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+               <TextView
+                   android:layout_centerVertical="true"
+                   android:id="@+id/write_commit"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+                   android:layout_marginRight="30dp"
+                   android:text="완료" />
+           </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">  </View>
+    <View
+        android:layout_marginTop="2dp"
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+
+    <!--사진 넣는 부분-->
+    <!--나중에 height=fill_parent로 바꾸기-->
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_marginTop="1dp"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:id="@+id/write_image_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/write_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/writingbg" />
+        <ImageView
+            android:id="@+id/filter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+        <EditText
+            android:scrollHorizontally="false"
+            android:hint="오늘의 배경에 글적기"
+            android:id="@+id/write_edit"
+            android:layout_width="300dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:gravity="center"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/write_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@color/maincolor"
+            android:id="@+id/write_menu_top"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal">
+            <!--글씨 수정-->
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/write_edit_font"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/textedit" />
+
+            </LinearLayout>
+
+            <!--배경 사진 고르기-->
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/goto_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/myphoto" />
+
+
+            </LinearLayout>
+        <!--오늘의 배경-->
+            <LinearLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/write_todaypic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/todaybg" />
+
+
+            </LinearLayout>
+
+            <!--indicator-->
+            <RelativeLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/write_indicator"
+                    android:src="@drawable/down"
+                    android:layout_marginRight="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/bgopacity"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/write_menu_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!--필터 레이아웃-->
+            <RelativeLayout
+                android:visibility="gone"
+                android:background="@drawable/bgopacity"
+                android:id="@+id/write_filter_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <SeekBar
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/filter_seekbar"
+                    android:progress="0"
+                    android:max="90"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_marginTop="22dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp">
+                    <HorizontalScrollView
+                        android:scrollbars="none"
+                        android:layout_marginTop="22dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <!--필터1-->
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textSize="10sp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="기본"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                              <ImageView
+                                        android:id="@+id/filter_basic"
+                                        android:layout_marginTop="10dp"
+                                        android:src="@drawable/ic_launcher_background"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+
+                            </LinearLayout>
+                            <!--end of 필터1-->
+                            <!--필터2-->
+                            <LinearLayout
+                                android:layout_marginLeft="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textSize="10sp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="안개"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:id="@+id/filter1"
+                                        android:src="@drawable/ic_launcher_background"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                    <ImageView
+                                        android:src="@drawable/angae"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                </RelativeLayout>
+
+                            </LinearLayout>
+                            <!--end of 필터2-->
+
+                            <!--필터3-->
+                            <LinearLayout
+                                android:layout_marginLeft="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textSize="10sp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="달빛"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:id="@+id/filter2"
+                                        android:src="@drawable/ic_launcher_background"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                    <ImageView
+                                        android:src="@drawable/dalbit"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <!--end of 필터3-->
+                            <!--필터4-->
+                            <LinearLayout
+                                android:layout_marginLeft="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textSize="10sp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="새벽"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:id="@+id/filter3"
+                                        android:src="@drawable/ic_launcher_background"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                    <ImageView
+                                        android:src="@drawable/saebyuck"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <!--end of 필터4-->
+                            <!--필터5-->
+                            <LinearLayout
+                                android:layout_marginLeft="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textSize="10sp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="라떼"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:id="@+id/filter4"
+                                        android:src="@drawable/ic_launcher_background"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                    <ImageView
+                                        android:src="@drawable/latte"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <!--end of 필터5-->
+                            <!--필터6-->
+                            <LinearLayout
+                                android:layout_marginLeft="20dp"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:textSize="10sp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="노을"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                                <RelativeLayout
+                                    android:layout_marginTop="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <ImageView
+                                        android:id="@+id/filter5"
+                                        android:src="@drawable/ic_launcher_background"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                    <ImageView
+                                        android:src="@drawable/noel"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                            <!--end of 필터6-->
+                        </LinearLayout>
+
+
+                    </HorizontalScrollView>
+                </LinearLayout>
+            </RelativeLayout>
+            <!--end of 필터 레이아웃-->
+
+
+            <!--글씨 수정 버튼 눌렀을 때-->
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--글씨 변경 레이아웃-->
+                <LinearLayout
+                    android:background="@drawable/bgopacity"
+                    android:id="@+id/write_change_font_layout"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <!--글씨체 변경-->
+                    <LinearLayout
+                        android:background="@drawable/bgopacity"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="22dp">
+                        <TextView
+                            android:layout_gravity="center_vertical"
+                            android:text="글씨체"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="29dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <HorizontalScrollView
+                                android:scrollbars="none"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp">
+                                    <Button
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@drawable/font_button"
+                                        android:id="@+id/write_font_button1"
+                                        android:textSize="11sp"
+                                        android:text="나눔바른"
+                                        android:fontFamily="@font/nanum_barun_gothic"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                    <Button
+                                        android:layout_marginLeft="8dp"
+                                        android:background="@drawable/font_button"
+                                        android:fontFamily="@font/nanum_myeongjo"
+                                        android:id="@+id/write_font_button2"
+                                        android:textSize="11sp"
+                                        android:text="나눔명조"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                    <Button
+                                        android:fontFamily="@font/nanum_brush"
+                                        android:layout_marginLeft="8dp"
+                                        android:background="@drawable/font_button"
+                                        android:id="@+id/write_font_button3"
+                                        android:textSize="12sp"
+                                        android:text="나눔손글씨"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                    <Button
+                                        android:layout_marginLeft="8dp"
+                                        android:background="@drawable/font_button"
+                                        android:id="@+id/write_font_button4"
+                                        android:textSize="12sp"
+                                        android:fontFamily="@font/goyang"
+                                        android:text="고양체"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                    <Button
+                                        android:layout_marginLeft="8dp"
+                                        android:background="@drawable/font_button"
+                                        android:id="@+id/write_font_button5"
+                                        android:textSize="13sp"
+                                        android:fontFamily="@font/tvn_medium"
+                                        android:text="티비엔"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                    <Button
+                                        android:layout_marginLeft="8dp"
+                                        android:background="@drawable/font_button"
+                                        android:id="@+id/write_font_button6"
+                                        android:textSize="13sp"
+                                        android:fontFamily="@font/bmsoyoung_ttf"
+                                        android:text="배민체"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                    <Button
+                                        android:layout_marginLeft="8dp"
+                                        android:background="@drawable/font_button"
+                                        android:id="@+id/write_font_button7"
+                                        android:textSize="13sp"
+                                        android:fontFamily="@font/unbee"
+                                        android:text="어비체"
+                                        android:layout_width="70dp"
+                                        android:layout_height="25dp" />
+                                </LinearLayout>
+                            </HorizontalScrollView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                 <!--글씨 크기 변경-->
+                    <LinearLayout
+                        android:background="@drawable/bgopacity"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="글씨 크기" />
+                        <LinearLayout
+                            android:layout_marginLeft="14dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <SeekBar
+                                android:max="40"
+                                android:progress="20"
+                                android:id="@+id/write_seekbar_fontsize"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                  <!--줄 간격 변경-->
+                    <LinearLayout
+                        android:background="@drawable/bgopacity"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp">
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_gravity="center_vertical"
+                            android:text="줄 간격"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <LinearLayout
+                            android:layout_marginLeft="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <SeekBar
+                                android:max="1000"
+                                android:progress="500"
+                                android:id="@+id/write_seekbar_linespace"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+               <!--글씨 색상 변경-->
+                    <LinearLayout
+                        android:background="@drawable/bgopacity"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="글씨 색상" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:id="@+id/color1"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:background="@color/color1" />
+
+                                    <ImageView
+                                        android:id="@+id/color2"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color2" />
+
+                                    <ImageView
+                                        android:id="@+id/color3"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color3" />
+
+                                    <ImageView
+                                        android:id="@+id/color4"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color4" />
+
+                                    <ImageView
+                                        android:id="@+id/color5"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color5" />
+
+                                    <ImageView
+                                        android:id="@+id/color6"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="9dp"
+                                        android:background="@color/color6" />
+
+                                    <ImageView
+                                        android:id="@+id/color7"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color7" />
+
+                                    <ImageView
+                                        android:id="@+id/color8"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color8" />
+
+                                    <ImageView
+                                        android:id="@+id/color9"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:background="@color/color9" />
+
+                                </LinearLayout>
+                            </HorizontalScrollView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+        <!--배경 사진 변경 레이아웃-->
+              <ScrollView
+                  android:visibility="gone"
+                  android:id="@+id/write_change_image_layout"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+                  <LinearLayout
+                      android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent">
+                      <LinearLayout
+                          android:orientation="horizontal"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content">
+                          <ImageView
+                              android:layout_weight="1"
+                              android:src="@mipmap/ic_launcher"
+                              android:layout_width="150dp"
+                              android:layout_height="150dp" />
+                          <ImageView
+                              android:layout_weight="1"
+                              android:src="@mipmap/ic_launcher"
+                              android:layout_width="150dp"
+                              android:layout_height="150dp" />
+                          <ImageView
+                              android:layout_weight="1"
+                              android:src="@mipmap/ic_launcher"
+                              android:layout_width="150dp"
+                              android:layout_height="150dp" />
+                          <ImageView
+                              android:layout_weight="1"
+                              android:src="@mipmap/ic_launcher"
+                              android:layout_width="150dp"
+                              android:layout_height="150dp" />
+                      </LinearLayout>
+
+                  </LinearLayout>
+
+              </ScrollView>
+
+
+            </RelativeLayout>
+            <!--end of 글씨 수정 버튼 눌렀을 때-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

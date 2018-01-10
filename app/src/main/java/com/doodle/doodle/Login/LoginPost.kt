@@ -5,5 +5,6 @@ package com.doodle.doodle.Login
  */
 data class LoginPost (
         var email:String,
-        var pw:String
+        var pw:String,
+        var token:String
 )

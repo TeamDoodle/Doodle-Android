@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    android:background="@drawable/bgopacity"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
+    tools:context=".Doodle_Me.FeedActivity"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:orientation="vertical">
         <RelativeLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_weight="0">
-            <TextView
-                android:id="@+id/myfeed_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="15sp"
-                android:text="나의글"
-                android:layout_centerHorizontal="true"/>
+            android:orientation="vertical">
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#445061"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="나의 글" />
+            </RelativeLayout>
+
+
         </RelativeLayout>
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/myfeed_scroll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+
+    </LinearLayout>
+    <View
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">  </View>
+    <View
+        android:layout_marginTop="2dp"
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+
+    </View>
+
 
             <LinearLayout
+                android:background="@drawable/bgopacity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:focusableInTouchMode="true"
@@ -52,10 +72,12 @@
                         android:orientation="vertical"
                         android:layout_toRightOf="@id/myfeed_profilePhoto">
                         <TextView
+                            android:textColor="#464646"
+                            android:fontFamily="@font/nanum_myeongjo_extra_bold"
                             android:id="@+id/myfeed_writingName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="13sp"
+                            android:textSize="14sp"
                             android:text="필명"/>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -63,11 +85,13 @@
                             android:layout_marginTop="20dp"
                             android:orientation="horizontal">
                             <TextView
+                                android:textColor="#464646"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="12sp"
                                 android:text="감성 "/>
                             <TextView
+                                android:textColor="#464646"
                                 android:id="@+id/myfeed_postingNum"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -82,11 +106,13 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
                                 <TextView
+                                    android:textColor="#464646"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="12sp"
                                     android:text="담아감 "/>
                                 <TextView
+                                    android:textColor="#464646"
                                     android:id="@+id/myfeed_scrapNum"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -100,6 +126,7 @@
 
                     </LinearLayout>
                     <TextView
+                        android:textColor="#464646"
                         android:id="@+id/myfeed_editProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -107,16 +134,17 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
                         android:layout_marginBottom="35dp"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:text="프로필 수정"/>
                     <TextView
+                        android:textColor="#464646"
                         android:id="@+id/myfeed_profileComment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:layout_below="@id/myfeed_profilePhoto"
                         android:layout_marginTop="15dp"
-                        android:textSize="13sp"
+                        android:textSize="12sp"
                         android:text="'당신의 끄적임이 글이 되는 곳'"/>
 
                 </RelativeLayout>
@@ -126,41 +154,34 @@
                     android:layout_height="31dp"
                     android:orientation="horizontal"
                     >
-                    <TextView
+                    <ImageView
+                        android:src="@drawable/mymyon"
                         android:id="@+id/myfeed_gatherFeed"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:text="모아보기"
-                        android:textAlignment="center" />
-                    <TextView
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:src="@drawable/scrapoff"
                         android:id="@+id/myfeed_scrapFeed"
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:text="담아보기"
-                        android:textAlignment="center" />
+                        android:layout_height="30dp"/>
                 </LinearLayout>
 
-
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/myfeed_fragmentContainer"
+                <com.doodle.doodle.Doodle_Read.SwipeViewPager
+                    android:background="@drawable/dayfeelinglayer"
+                    android:id="@+id/myfeed_viewPager"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
+                    android:layout_height="wrap_content">
 
-                </FrameLayout>
+                </com.doodle.doodle.Doodle_Read.SwipeViewPager>
 
             </LinearLayout>
 
 
 
-        </ScrollView>
 
 
 
-    </LinearLayout>
 
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -13,6 +13,7 @@ import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
 import com.doodle.doodle.SignUp.SignUpActivity
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,10 +35,13 @@ class LoginActivity : AppCompatActivity() {
         login_btn.setOnClickListener {
              login()
         }
+        goto_signup.setOnClickListener { startActivity(Intent(applicationContext,SignUpActivity::class.java)) }
     }
+
     fun login(){
 
-        val loginResponse=networkService!!.login(LoginPost(login_email.text.toString(),login_password.text.toString()))
+        val loginResponse=networkService!!.login(LoginPost(login_email.text.toString(),login_password.text.toString()
+        , FirebaseInstanceId.getInstance().token.toString()))
         loginResponse.enqueue(object : Callback<LoginResponse>{
 //           성공 시
             override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
@@ -45,8 +49,6 @@ class LoginActivity : AppCompatActivity() {
             if(response!!.isSuccessful){
                 Log.d("success","success")
                     if(response.body().status==200){
-//                    CommonData 안에 loginProfile,token 넣어줌
-//                        loginData=>(profile, token)
                         CommonData.loginData=response.body().result
 
 //                      토큰 데이터에 저장 해놓음

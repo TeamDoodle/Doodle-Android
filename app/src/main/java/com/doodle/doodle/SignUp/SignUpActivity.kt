@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -41,25 +42,41 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         networkService= ApplicationController.instance!!.networkService
 
-//        중복 체크
-        signup_nickname.onFocusChangeListener = object :View.OnFocusChangeListener{
-
-            override fun onFocusChange(p0: View?, p1: Boolean) {
-                if(p1==false){
-                    Toast.makeText(applicationContext,"nickname 포커스 바뀜",Toast.LENGTH_SHORT).show()
-                    duplicateCheck(1)
-                }
+        signup_nickname.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                Log.d("afterTextChanged","afterTextChanged")
+                duplicateCheck(1)
             }
-        }
-        signup_email.onFocusChangeListener=object :View.OnFocusChangeListener{
-            override fun onFocusChange(p0: View?, p1: Boolean) {
-                if(p1==false){
-                    Toast.makeText(applicationContext,"email 포커스 바뀜",Toast.LENGTH_SHORT).show()
-                    duplicateCheck(2)
 
-                }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                Log.d("beforeTextChanged","beforeTextChanged")
             }
-        }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                Log.d("onTextChanged","onTextChanged")
+            }
+
+        })
+
+//        중복 체크 FocusChangeListener
+//        signup_nickname.onFocusChangeListener = object :View.OnFocusChangeListener{
+//
+//            override fun onFocusChange(p0: View?, p1: Boolean) {
+//                if(p1==false){
+//                    Toast.makeText(applicationContext,"nickname 포커스 바뀜",Toast.LENGTH_SHORT).show()
+//                    duplicateCheck(1)
+//                }
+//            }
+//        }
+//        signup_email.onFocusChangeListener=object :View.OnFocusChangeListener{
+//            override fun onFocusChange(p0: View?, p1: Boolean) {
+//                if(p1==false){
+//                    Toast.makeText(applicationContext,"email 포커스 바뀜",Toast.LENGTH_SHORT).show()
+//                    duplicateCheck(2)
+//
+//                }
+//            }
+//        }
 
 //        회원가입 버튼
         signup_button.setOnClickListener {
@@ -69,6 +86,8 @@ class SignUpActivity : AppCompatActivity() {
         } catch (e:Exception){
             Toast.makeText(applicationContext,"프로필 사진을 지정해주세요",Toast.LENGTH_SHORT).show()
         }
+            startActivity(Intent(applicationContext,LoginActivity::class.java))
+            finish()
         }
 
 //        프사 변경
@@ -132,19 +151,17 @@ class SignUpActivity : AppCompatActivity() {
 //    필명 중복확인
     fun duplicateCheck(flag:Int?){
     Log.d("함수들어옴","함수 들어왔다 슈바")
-        val email=RequestBody.create(MediaType.parse("text/plain"),signup_email.text.toString())
+// 필명 중복확인
+    if(flag==1){
         val nickname=RequestBody.create(MediaType.parse("text/plain"),signup_nickname.text.toString())
-
-        val duplicateResponse=networkService!!.duplicate(nickname,email,flag!!)
-
+        val duplicateResponse=networkService!!.duplicate(nickname,RequestBody.create(MediaType.parse("text/plain"),""),flag!!)
         duplicateResponse.enqueue(object : Callback<DuplicateResponse>{
-//            성공 시
+            //            성공 시
             override fun onResponse(call: Call<DuplicateResponse>?, response: Response<DuplicateResponse>?) {
-            Log.d("onResponse",flag.toString())
+                Log.d("onResponse",flag.toString())
                 if(response!!.isSuccessful){
                     Log.d("isSuccessful","isSuccessful")
                     if(response.body().status==200){
-                        Log.d("사용가능","사용가능")
                         ApplicationController.instance!!.makeToast("사용 가능")
                     }
                     else if(response.body().status==400){
@@ -153,11 +170,40 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
 
-//            실패 시
+            //            실패 시
+            override fun onFailure(call: Call<DuplicateResponse>?, t: Throwable?) {
+                Log.d("실패","onFailure")
+                ApplicationController.instance!!.makeToast("서버 상태를 확인해주세요")
+            }
+        })
+    }
+//    이메일 중복확인
+    else if(flag==2){
+        val email=RequestBody.create(MediaType.parse("text/plain"),signup_email.text.toString())
+        val duplicateResponse=networkService!!.duplicate(RequestBody.create(MediaType.parse("text/plain"),""),email,flag!!)
+        duplicateResponse.enqueue(object : Callback<DuplicateResponse>{
+            //            성공 시
+            override fun onResponse(call: Call<DuplicateResponse>?, response: Response<DuplicateResponse>?) {
+                Log.d("onResponse",flag.toString())
+                if(response!!.isSuccessful){
+                    Log.d("isSuccessful","isSuccessful")
+                    if(response.body().status==200){
+                        ApplicationController.instance!!.makeToast("사용 가능")
+                    }
+                    else if(response.body().status==400){
+                        ApplicationController.instance!!.makeToast("중복됩니다ㅠㅠ")
+                    }
+                }
+            }
+
+            //            실패 시
             override fun onFailure(call: Call<DuplicateResponse>?, t: Throwable?) {
                 ApplicationController.instance!!.makeToast("서버 상태를 확인해주세요")
             }
         })
+    }
+
+
 
     }
 

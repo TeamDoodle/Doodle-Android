@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar.Fullscreen">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/maincolor</item>
         <item name="colorPrimaryDark">@color/maincolor</item>
@@ -10,5 +10,8 @@
         <item name="android:fontFamily">@font/nanum_myeongjo</item>
         <item name="android:navigationBarColor">@color/maincolor</item>
         <item name="android:colorForeground">@color/dalbit</item>
+        <item name="android:colorPrimary">@color/maincolor</item>
+        <item name="android:colorPrimaryDark">@color/maincolor</item>
+        <item name="android:colorAccent">@color/maincolor</item>
     </style>
 </resources>

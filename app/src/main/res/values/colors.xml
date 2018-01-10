@@ -5,15 +5,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="maincolor">#445061</color>
-    <color name="color1">#FFFFFF</color>
-    <color name="color2">#BDBDBD</color>
-    <color name="color3">#FF8A80</color>
-    <color name="color4">#9575CD</color>
-    <color name="color5">#4DB6AC</color>
-    <color name="color6">#E6EE9C</color>
-    <color name="color7">#006064</color>
-    <color name="color8">#424242</color>
-    <color name="color9">#455A64</color>
+    <color name="color1">#000000</color>
+    <color name="color2">#ffffff</color>
+    <color name="color3">#ffcece</color>
+    <color name="color4">#fce0bb</color>
+    <color name="color5">#fff8c4</color>
+    <color name="color6">#d4ffc4</color>
+    <color name="color7">#c1fffa</color>
+    <color name="color8">#cae2ff</color>
+    <color name="color9">#f0bfff</color>
     <color name="color10">#212121</color>
 
     <!--필터 색상-->

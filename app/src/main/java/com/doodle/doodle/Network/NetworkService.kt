@@ -1,11 +1,21 @@
 package com.doodle.doodle.Network
 
+import com.doodle.doodle.Doodle_Comment.CommentPostResponse
+import com.doodle.doodle.Doodle_Comment.CommentResponse
+import com.doodle.doodle.Doodle_Comment.PostCommentPost
 import com.doodle.doodle.Doodle_Read.GetFeedPost
 import com.doodle.doodle.Doodle_Read.GetFeedResponse
+import com.doodle.doodle.Like.LikePost
+import com.doodle.doodle.Like.LikeResponse
+import com.doodle.doodle.Doodle_Write.PostResponse
 import com.doodle.doodle.Login.LoginPost
 import com.doodle.doodle.Login.LoginResponse
+import com.doodle.doodle.Scrap.ScrapPost
+import com.doodle.doodle.Scrap.ScrapResponse
 import com.doodle.doodle.SignUp.DuplicateResponse
 import com.doodle.doodle.SignUp.SignUpResponse
+import com.doodle.doodle.service.AlarmPost
+import com.doodle.doodle.service.AlarmResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -41,4 +51,49 @@ interface NetworkService {
     fun getFeed(
         @Header("token") token : String,
         @Body getFeedPost: GetFeedPost):Call<GetFeedResponse>
+
+//    글작성
+
+    //    글작성
+    @Multipart
+    @POST("doodle/post")
+    fun post(
+            @Header("token") token : String,
+            @Part("text") text:RequestBody,
+            @Part image:MultipartBody.Part?):Call<PostResponse>
+//    좋아요
+    @POST("like/{idx}")
+    fun like(
+        @Header("token") token:String,
+        @Path("idx") idx:Int,
+        @Body likePost: LikePost):Call<LikeResponse>
+
+//    담기
+    @POST("scrap/{idx}")
+    fun scrap(
+        @Header("token") token:String,
+        @Path("idx") idx: Int,
+        @Body scrapPost:ScrapPost):Call<ScrapResponse>
+
+    //댓글조회
+    @GET("comments/{idx}")
+    fun getComment(
+            @Header("token") token : String,
+            @Path("idx") idx: Int
+    ) : Call<CommentResponse>
+
+//    푸쉬알람
+    @POST("alarm/token")
+    fun alarm(
+            @Body alarmPost:AlarmPost
+    ): Call<AlarmResponse>
+
+    //댓글작성
+    @POST("comments/{idx}")
+    fun postComment(
+            @Header("token") token : String,
+            @Path("idx") idx: Int,
+            @Body postCommentPost : PostCommentPost
+    ) : Call<CommentPostResponse>
+
 }

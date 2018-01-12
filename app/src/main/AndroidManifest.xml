@@ -15,30 +15,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login.LoginActivity">
+        <activity android:name=".Splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            </intent-filter></activity>
+
         <activity android:name=".Doodle_Write.WriteActivity" />
         <activity android:name=".Doodle_Me.FeedActivity" />
         <activity android:name=".SignUp.SignUpActivity" />
-        <activity android:name=".Splash.SplashActivity" />
+        <activity android:name=".Login.LoginActivity"/>
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".Doodle_Me.MyfeedBigActivity" />
         <activity android:name=".Main.SelectActivity" />
         <activity android:name=".Doodle_Books.BookActivity" />
+        <activity android:name=".Doodle_Books.DoodleBookOneActivity" />
+        <activity android:name=".Doodle_Books.DoodleBookTwoActivity" />
+        <activity android:name=".Doodle_Books.OrderActivity" />
         <activity android:name=".Alarm.AlarmActivity" />
         <activity android:name=".Settings.SettingActivity" />
         <activity android:name=".Tutorial.TutorialActivity" />
         <activity android:name=".Doodle_Read.AppreciateActivity" />
-        <activity android:name=".Doodle_Comment.CommentActivity"/>
+        <activity android:name=".Doodle_Comment.CommentActivity" />
         <activity android:name=".Doodle_Me.ProfileActivity" />
-        <activity android:name=".Doodle_Comment.CommentActivity"></activity>
-
-        <!-- 서비스 선언해주는 부분-->
+        <activity android:name=".Doodle_Others.OtherActivity" />
+        <activity android:name=".Doodle_Search.SearchActivity" />
+        <!-- 서비스 선언해주는 부분 -->
         <service android:name=".service.MyFirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
@@ -49,6 +52,8 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+
     </application>
 
 </manifest>

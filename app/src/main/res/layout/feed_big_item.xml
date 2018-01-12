@@ -21,18 +21,51 @@
             android:layout_height="wrap_content"
             android:textSize="13sp"
             android:text="2018.02.01"/>
-
-        <ImageView
-            android:id="@+id/image_setting"
-            android:background="@drawable/more"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:padding="10dp"
+                android:id="@+id/image_setting"
+                android:src="@drawable/more"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/image_save"
+                    android:text="저장"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/image_delete"
+                    android:layout_marginTop="10dp"
+                    android:text="삭제"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+         </RelativeLayout>
+
 
 
     </RelativeLayout>
+
+
     <ImageView
         android:layout_marginTop="10dp"
         android:src="@drawable/mytext6"
@@ -42,7 +75,6 @@
         android:adjustViewBounds="true"
         android:layout_below="@id/myfeed_big_top"/>
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
@@ -50,30 +82,31 @@
         android:orientation="horizontal"
         android:layout_below="@id/feedBigImage">
         <TextView
+            android:padding="5dp"
             android:id="@+id/big_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="공감"/>
         <TextView
-            android:layout_marginLeft="5dp"
             android:id="@+id/big_likeCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="243"/>
         <TextView
+            android:padding="5dp"
             android:id="@+id/big_comment"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="댓글" />
         <TextView
-            android:layout_marginLeft="5dp"
             android:id="@+id/big_commentCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="28"/>
         <TextView
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
+            android:padding="5dp"
             android:id="@+id/big_scrap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,6 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:padding="5dp"
                 android:id="@+id/big_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

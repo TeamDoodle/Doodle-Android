@@ -6,5 +6,6 @@ package com.doodle.doodle.Login
 data class LoginProfile (
         var email:String,
         var nickname:String,
-        var profile:String?
+        var profile:String?,
+        var description : String
 )

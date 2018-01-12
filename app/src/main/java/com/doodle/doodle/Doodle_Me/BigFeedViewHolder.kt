@@ -23,4 +23,6 @@ class BigFeedViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     var bigScrap:TextView=itemView!!.findViewById(R.id.big_scrap)
     var bigScrap_count:TextView=itemView!!.findViewById(R.id.big_scrapCount)
     var bigNickname:TextView=itemView!!.findViewById(R.id.big_nickname)
+    var image_save:TextView=itemView!!.findViewById(R.id.image_save)
+    var image_delete:TextView=itemView!!.findViewById(R.id.image_delete)
 }

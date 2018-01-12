@@ -9,40 +9,60 @@
     android:orientation="vertical"
     tools:context="com.doodle.doodle.Doodle_Comment.CommentActivity">
 
+    <!--커스텀 액션바-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:orientation="horizontal">
+        android:layout_height="50dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#445061"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="댓글" />
 
-        <ImageView
-            android:layout_width="12dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="11dp"
-            android:src="@drawable/back" />
+            </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="132dp"
-            android:layout_marginTop="11dp"
-            android:text="댓글"
-            android:textColor="#445061"
-            android:textSize="18dp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/main_alarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="30dp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
 
     </LinearLayout>
-
-
     <View
+        android:background="#707070"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000" />
-
+        android:layout_height="1dp">  </View>
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
         android:layout_marginTop="2dp"
-        android:background="#000000" />
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+
 
 
     <LinearLayout
@@ -53,16 +73,34 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/frame4444"
+        android:layout_width="63dp"
+        android:layout_height="63dp" />
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/comment_profile"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:src="@drawable/userprofile" />
+    </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/comment_profile"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/userprofile" />
+</RelativeLayout>
+
+
 
             <TextView
+                android:fontFamily="@font/nanum_myeongjo_extra_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="14dp"
@@ -123,6 +161,7 @@
                 android:textSize="10dp" />
 
             <TextView
+                android:fontFamily="@font/nanum_myeongjo_extra_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="107dp"
@@ -174,7 +213,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="50dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -205,7 +244,7 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="2dp"
                     android:layout_marginLeft="3dp"
@@ -219,12 +258,12 @@
             <Button
                 android:id="@+id/comment_postBtn"
                 android:layout_width="62dp"
-                android:layout_height="29dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="2dp"
                 android:layout_marginRight="2dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:background="@drawable/post" />
         </LinearLayout>
 

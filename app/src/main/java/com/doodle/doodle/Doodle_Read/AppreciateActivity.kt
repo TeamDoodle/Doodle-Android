@@ -1,12 +1,14 @@
 package com.doodle.doodle.Doodle_Read
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
+import com.doodle.doodle.Doodle_Search.SearchActivity
 import com.doodle.doodle.R
 import kotlinx.android.synthetic.main.activity_appreciate.*
 import kotlinx.android.synthetic.main.activity_write.*
@@ -15,7 +17,9 @@ class AppreciateActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appreciate)
-
+        appreciate_search.setOnClickListener{
+            startActivity(Intent(applicationContext,SearchActivity::class.java))
+        }
         all.setOnClickListener(this)
         week.setOnClickListener(this)
         day.setOnClickListener(this)

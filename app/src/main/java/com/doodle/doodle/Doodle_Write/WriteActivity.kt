@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
@@ -24,12 +25,12 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.doodle.doodle.Doodle_Me.FeedActivity
+import com.bumptech.glide.RequestManager
+import com.doodle.doodle.Main.MainActivity
 import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
 import kotlinx.android.synthetic.main.activity_write.*
-import kotlinx.android.synthetic.main.activity_write.view.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -38,73 +39,80 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.*
 
-class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClickListener{
+class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClickListener {
 
-    private var animShow:Animation?=null
-    private var animHide:Animation?=null
+    private var animShow: Animation? = null
+    private var animHide: Animation? = null
     private var image: MultipartBody.Part? = null
     private var networkService: NetworkService? = null
-    var params:ViewGroup.LayoutParams?=null
-    var params_filter:ViewGroup.LayoutParams?=null
-    private val REQ_CODE_SELECT_IMAGE=100
-    private var data: Uri?=null
-//    var params_bottom:ViewGroup.LayoutParams?=null
+    var params: ViewGroup.LayoutParams? = null
+    var params_filter: ViewGroup.LayoutParams? = null
+    private val REQ_CODE_SELECT_IMAGE = 100
+    private var data: Uri? = null
+    private var requestManager: RequestManager? = null
 
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_write)
         networkService = ApplicationController.instance!!.networkService
         initAnimation()
-        var flag:Boolean?=null
-        flag=true
+        var flag: Boolean? = null
+        flag = true
+
+        write_splash.setOnClickListener {
+            write_splash.visibility=View.GONE
+        }
 
         write_menu_content!!.startAnimation(animHide)
         write_menu_top!!.animate().translationY(0F)
 //
 //        사진 정방형으로
-        params=write_image_layout!!.layoutParams
-        params!!.width=resources.displayMetrics.widthPixels
-        params!!.height=params!!.width
+        params = write_image_layout!!.layoutParams
+        params!!.width = resources.displayMetrics.widthPixels
+        params!!.height = params!!.width
 
 //        필터 사진 정방형으로
-        params_filter=filter!!.layoutParams
-        params_filter!!.width=resources.displayMetrics.widthPixels
-        params_filter!!.height=params_filter!!.width
+        params_filter = filter!!.layoutParams
+        params_filter!!.width = resources.displayMetrics.widthPixels
+        params_filter!!.height = params_filter!!.width
 
 //        params_bottom=write_menu_top!!.layoutParams
 //      메뉴 이동 및 화면 보기 조정
-        write_change_image_layout!!.visibility=View.GONE
-        write_change_font_layout!!.visibility=View.VISIBLE
+//        write_change_image_layout!!.visibility=View.GONE
+        write_change_font_layout!!.visibility = View.VISIBLE
+
+//        indicator 눌렀을 때
         write_indicator.setOnClickListener {
-            Log.d("flag",flag.toString())
-            if(flag==true){
-                val h:Int=write_menu.height-write_menu_top.height
-                val px: Float =TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,h.toFloat(),
+            Log.d("flag", flag.toString())
+            if (flag == true) {
+                val h: Int = write_menu.height - write_menu_top.height
+                val px: Float = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, h.toFloat(),
                         applicationContext.resources.displayMetrics)
 
-                Log.d("menu_content",px.toString())
-                Log.d("menu dp",h.toString())
+                Log.d("menu_content", px.toString())
+                Log.d("menu dp", h.toString())
                 write_indicator.setImageResource(R.drawable.up)
                 write_menu_content!!.startAnimation(animHide)
-                write_menu_content!!.visibility=View.GONE
-                write_menu_top!!.animate().translationY(1900%px)
-                flag=false
-            }else{
+                write_menu_content!!.visibility = View.GONE
+                write_menu_top!!.animate().translationY((write_menu.height-write_menu_top.height).toFloat())
+                flag = false
+            } else {
                 write_indicator.setImageResource(R.drawable.down)
                 write_menu_content!!.startAnimation(animShow)
-                write_menu_content!!.visibility=View.VISIBLE
+                write_menu_content!!.visibility = View.VISIBLE
                 write_menu_top!!.animate().translationY(0F)
-                flag=true
+                flag = true
             }
 
         }
 //      글씨체 수정 버튼
         write_edit_font.setOnClickListener {
             //            text와 edittext visibility
-            write_change_font_layout!!.visibility=View.VISIBLE
-            write_filter_layout!!.visibility=View.GONE
-            write_change_image_layout!!.visibility=View.GONE
+            write_change_font_layout!!.visibility = View.VISIBLE
+            write_filter_layout!!.visibility = View.GONE
+//            write_change_image_layout!!.visibility=View.GONE
         }
 
 //        글씨 폰트
@@ -118,7 +126,7 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
 
 
 //        글씨 크기
-        write_seekbar_fontsize!!.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
+        write_seekbar_fontsize!!.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 write_edit!!.setTextSize(p1.toFloat())
             }
@@ -132,9 +140,9 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
         })
 
 //        줄 간격
-        write_seekbar_linespace!!.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+        write_seekbar_linespace!!.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                write_edit.setLineSpacing(0F,(p1/200+1).toFloat())
+                write_edit.setLineSpacing(0F, (p1 / 200 + 1).toFloat())
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -160,25 +168,39 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
 
 
 //        이미지 있는 부분을 눌렀을때 텍스트 수정 가능
-        write_image_layout.setOnClickListener{
+        write_image_layout.setOnClickListener {
             write_edit!!.isFocusable
+        }
+
+//        오늘의 이미지
+        write_todaypic.setOnClickListener {
+            write_filter_layout.visibility = View.GONE
+            write_change_font_layout.visibility = View.GONE
+
+
         }
 
 //         앨범 접근 해서 사진 가져오기
         goto_album.setOnClickListener {
             changeImage()
-            write_filter_layout.visibility=View.VISIBLE
-            write_change_image_layout.visibility=View.GONE
+            write_filter_layout.visibility = View.VISIBLE
+//            write_change_image_layout.visibility=View.GONE
 
 //          사진 눌렀을 때 다시 write_font_change_layout 보이게
         }
 
-        fun getToken(key : String) : String{
+        fun getToken(key: String): String {
             val prefs = this.getSharedPreferences("token", Context.MODE_PRIVATE)
             return prefs.getString(key, "")
         }
 
-        fun postpost(){
+//        오늘의 이미지
+        requestManager = Glide.with(this)
+        write_todaypic.setOnClickListener {
+            TodayImage()
+        }
+
+        fun postpost() {
 
             val text = RequestBody.create(MediaType.parse("text/plain"), write_edit.text.toString())
             var postContent = networkService!!.post(getToken("token"), text, image!!)
@@ -187,7 +209,7 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
                     if (response!!.isSuccessful) {
                         if (response!!.body().message.equals("success")) {
                             ApplicationController.instance!!.makeToast("작성 완료")
-                            startActivity(Intent(applicationContext,FeedActivity::class.java))
+                            startActivity(Intent(applicationContext, MainActivity::class.java))
                             finish()
                         } else {
                             ApplicationController.instance!!.makeToast("작성 실패")
@@ -208,7 +230,7 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
 
             write_edit.bringToFront()
             write_edit.clearFocus()
-            Toast.makeText(applicationContext,"완료",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "완료", Toast.LENGTH_SHORT).show()
             write_image_layout.isDrawingCacheEnabled = true
             write_image_layout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED))
@@ -220,7 +242,7 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
             b.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
 
             val f = File(Environment.getExternalStorageDirectory().toString() +
-                    File.separator +System.currentTimeMillis().toString()+".jpg")
+                    File.separator + System.currentTimeMillis().toString() + ".jpg")
 
             val photoBody = RequestBody.create(MediaType.parse("image/jpg"), bytes.toByteArray())
             image = MultipartBody.Part.createFormData("image", f.name, photoBody)
@@ -228,31 +250,22 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
             postpost()
 
             try {
-                Log.d("글적","글적글적")
                 f.createNewFile()
                 val fo = FileOutputStream(f)
                 fo.write(bytes.toByteArray())
                 fo.close()
             } catch (e: Exception) {
             }
-            val intent:Intent= Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
+            val intent: Intent = Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)
             intent!!.data = Uri.fromFile(f)
             sendBroadcast(intent)
 
-
-
-            //startActivity(Intent(applicationContext,MyfeedActivity::class.java))
         }
-
-
-
-
-
 //        필터 seekbar
-        filter_seekbar.setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+        filter_seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                if(p1>1){
-                    filter.setAlpha(100-p1)
+                if (p1 > 1) {
+                    filter.setAlpha(100 - p1)
                 }
             }
 
@@ -265,11 +278,13 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
         })
 
     }//End of onCreate
+
     //          슬라이드 애니메이션 초기화
-    fun initAnimation(){
-        animShow=AnimationUtils.loadAnimation(this, R.anim.view_show)
-        animHide=AnimationUtils.loadAnimation(this, R.anim.view_hide)
+    fun initAnimation() {
+        animShow = AnimationUtils.loadAnimation(this, R.anim.view_show)
+        animHide = AnimationUtils.loadAnimation(this, R.anim.view_hide)
     }
+
     //           이미지 바꾸기
     fun changeImage() {
         val intent = Intent(Intent.ACTION_PICK)
@@ -303,14 +318,14 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
                     val photo = File(this.data.toString()) // 가져온 파일의 이름을 알아Lㅐ7l 우lㅎN...☆
 
 //
-                    DressImage(this,data.data,write_image)
+                    DressImage(this, data.data, write_image)
 //                  기본 필터 이미지에 적용
-                    DressImage(this,data.data,filter_basic)
-                    DressImage(this,data.data,filter1)
-                    DressImage(this,data.data,filter2)
-                    DressImage(this,data.data,filter3)
-                    DressImage(this,data.data,filter4)
-                    DressImage(this,data.data,filter5)
+                    DressImage(this, data.data, filter_basic)
+                    DressImage(this, data.data, filter1)
+                    DressImage(this, data.data, filter2)
+                    DressImage(this, data.data, filter3)
+                    DressImage(this, data.data, filter4)
+                    DressImage(this, data.data, filter5)
 
 
 //                   이미지 필터 적용
@@ -330,7 +345,7 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
     }
 
     //    이미지 입히기
-    fun DressImage(activity:FragmentActivity,uri:Uri?,image:ImageView){
+    fun DressImage(activity: FragmentActivity, uri: Uri?, image: ImageView) {
         Glide.with(activity)
                 .load(uri)
                 .centerCrop()
@@ -342,96 +357,115 @@ class WriteActivity  : AppCompatActivity(),View.OnClickListener,View.OnLongClick
 
 //    onClick
     override fun onClick(v: View?) {
-        when(v){
-            color1->{
-                Toast.makeText(applicationContext,"안녕",Toast.LENGTH_SHORT).show()
+        when (v) {
+            color1 -> {
+                Toast.makeText(applicationContext, "안녕", Toast.LENGTH_SHORT).show()
                 write_edit.setTextColor(resources.getColor(R.color.color1))
             }
-            color2->{
+            color2 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color2))
             }
-            color3->{
+            color3 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color3))
             }
-            color4->{
+            color4 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color4))
             }
-            color5->{
+            color5 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color5))
             }
-            color6->{
+            color6 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color6))
             }
-            color7->{
+            color7 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color7))
             }
-            color8->{
+            color8 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color8))
             }
-            color9->{
+            color9 -> {
                 write_edit.setTextColor(resources.getColor(R.color.color9))
             }
 
-            write_font_button1->{
-                val face=Typeface.createFromAsset(assets,"fonts/nanum_barun_gothic.ttf")
-                write_edit.typeface=face
+            write_font_button1 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/nanum_barun_gothic.ttf")
+                write_edit.typeface = face
             }
-            write_font_button2->{
-                val face=Typeface.createFromAsset(assets,"fonts/nanum_myeongjo.ttf")
-                write_edit.typeface=face
+            write_font_button2 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/nanum_myeongjo.ttf")
+                write_edit.typeface = face
             }
-            write_font_button3->{
-                val face=Typeface.createFromAsset(assets,"fonts/nanum_brush.ttf")
-                write_edit.typeface=face
+            write_font_button3 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/nanum_brush.ttf")
+                write_edit.typeface = face
             }
-            write_font_button4->{
-                val face=Typeface.createFromAsset(assets,"fonts/goyang.ttf")
-                write_edit.typeface=face
+            write_font_button4 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/goyang.ttf")
+                write_edit.typeface = face
             }
-            write_font_button5->{
-                val face=Typeface.createFromAsset(assets,"fonts/tvn_medium.ttf")
-                write_edit.typeface=face
+            write_font_button5 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/tvn_medium.ttf")
+                write_edit.typeface = face
             }
-            write_font_button6->{
-                val face=Typeface.createFromAsset(assets,"fonts/bmsoyoung_ttf.ttf")
-                write_edit.typeface=face
+            write_font_button6 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/bmsoyoung_ttf.ttf")
+                write_edit.typeface = face
             }
-            write_font_button7->{
-                val face=Typeface.createFromAsset(assets,"fonts/unbee.ttf")
-                write_edit.typeface=face
+            write_font_button7 -> {
+                val face = Typeface.createFromAsset(assets, "fonts/unbee.ttf")
+                write_edit.typeface = face
             }
-            filter_basic->{
-                filter.visibility=View.GONE
+            filter_basic -> {
+                filter.visibility = View.GONE
             }
-            filter1->{
-                filter.visibility=View.VISIBLE
+            filter1 -> {
+                filter.visibility = View.VISIBLE
                 filter.setImageResource(R.drawable.angae)
             }
-            filter2->{
-                filter.visibility=View.VISIBLE
+            filter2 -> {
+                filter.visibility = View.VISIBLE
                 filter.setImageResource(R.drawable.dalbit)
             }
-            filter3->{
-                filter.visibility=View.VISIBLE
+            filter3 -> {
+                filter.visibility = View.VISIBLE
                 filter.setImageResource(R.drawable.saebyuck)
             }
-            filter4->{
-                filter.visibility=View.VISIBLE
+            filter4 -> {
+                filter.visibility = View.VISIBLE
                 filter.setImageResource(R.drawable.latte)
             }
-            filter5->{
-                filter.visibility=View.VISIBLE
+            filter5 -> {
+                filter.visibility = View.VISIBLE
                 filter.setImageResource(R.drawable.noel)
             }
         }
     }
+
     //    롱클릭 했을 때
     override fun onLongClick(v: View?): Boolean {
-        Log.d("longClick","LongClick")
-        Toast.makeText(applicationContext,"롱클릭",Toast.LENGTH_SHORT).show()
+        Log.d("longClick", "LongClick")
+        Toast.makeText(applicationContext, "롱클릭", Toast.LENGTH_SHORT).show()
 
 
         return true
     }
+
+    fun TodayImage() {
+        val todayImage = networkService!!.getImage()
+        todayImage.enqueue(object : Callback<TodayImageResponse> {
+            override fun onResponse(call: Call<TodayImageResponse>?, response: Response<TodayImageResponse>?) {
+                if (response!!.isSuccessful) {
+                    requestManager!!.load(response.body().result[2].image!!).into(write_image)
+                }
+            }
+
+            override fun onFailure(call: Call<TodayImageResponse>?, t: Throwable?) {
+
+            }
+        })
+    }
+
+
+
 
 }

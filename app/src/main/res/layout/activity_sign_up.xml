@@ -39,8 +39,8 @@
     <ImageView
         android:src="@drawable/profile"
         android:id="@+id/signup_profile"
-        android:layout_width="79dp"
-        android:layout_height="79dp"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
         />
 </RelativeLayout>
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.RequestManager
 import com.doodle.doodle.Doodle_Comment.CommentActivity
 import com.doodle.doodle.Doodle_Me.CommonFeedData
+import com.doodle.doodle.Doodle_Others.OtherActivity
 import com.doodle.doodle.Like.LikePost
 import com.doodle.doodle.Like.LikeResponse
 import com.doodle.doodle.Network.ApplicationController
@@ -65,6 +66,14 @@ class AppreciateDayAdapter(var con: Context,var feedList : ArrayList<FeedList>,v
 
             })
         }//좋아요 끝
+
+        //        닉네임 눌렀을 때 그사람 피드로 감
+        holder!!.nickname.setOnClickListener {
+            val intent:Intent= Intent(con!!, OtherActivity::class.java)
+            intent.putExtra("user_idx",feedList!!.get(position).user_idx)
+            con.startActivity(intent)
+        }
+
         //            댓글
         holder!!.comment.setOnClickListener{
             id = feedList!!.get(position).idx
@@ -124,9 +133,7 @@ class AppreciateDayAdapter(var con: Context,var feedList : ArrayList<FeedList>,v
             holder!!.likeCount.text=feedList!!.get(position).like_count.toString()
             holder!!.scrapCount.text=feedList!!.get(position).scrap_count.toString()
             holder!!.nickname.text=feedList!!.get(position).nickname
-            holder!!.updated.text=feedList!!.get(position).updated
-
-
+            holder!!.updated.text=feedList!!.get(position).created
 
         }
         else if(getItemViewType(position)==VIEW_TYPE_IMAGE){

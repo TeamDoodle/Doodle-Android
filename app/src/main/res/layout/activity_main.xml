@@ -74,93 +74,127 @@
         android:layout_height="1dp">
     </View>
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:elevation="10dp"
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:id="@+id/main_write"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/writeoff"
-            android:gravity="center"
-            android:orientation="vertical">
-    <TextView
-        android:textColor="#ffffff"
-        android:text="글 작성"
-        android:shadowColor="#000000"
-        android:shadowDx="1.0"
-        android:shadowDy="1.0"
-        android:shadowRadius="1.0"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
+            android:layout_height="142dp">
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/write_linear"
+                android:orientation="vertical"
+                android:background="@drawable/m1off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#ffffff"
+                    android:text="글 작성"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.0"
+                    android:shadowDy="1.0"
+                    android:shadowRadius="1.0"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_below="@+id/write_linear"
+                android:background="@drawable/shadow"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"></View>
+        </RelativeLayout>
+        <RelativeLayout
             android:id="@+id/main_read"
+            android:layout_below="@+id/main_write"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/feeloff"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:textColor="#ffffff"
-                android:text="감상하기"
-                android:shadowColor="#000000"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="1.0"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="142dp">
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/read_linear"
+                android:orientation="vertical"
+                android:background="@drawable/m2off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#ffffff"
+                    android:text="감상하기"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.0"
+                    android:shadowDy="1.0"
+                    android:shadowRadius="1.0"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_below="@+id/read_linear"
+                android:background="@drawable/shadow"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"></View>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/main_myfeed"
+            android:layout_below="@+id/main_read"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/mypageoff"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:textColor="#ffffff"
-                android:text="나의 글"
-                android:shadowColor="#000000"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="1.0"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
+            android:layout_height="142dp">
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/myfeed_linear"
+                android:orientation="vertical"
+                android:background="@drawable/m3off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#ffffff"
+                    android:text="나의 글"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.0"
+                    android:shadowDy="1.0"
+                    android:shadowRadius="1.0"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_below="@+id/myfeed_linear"
+                android:background="@drawable/shadow"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"></View>
+        </RelativeLayout>
+        <RelativeLayout
             android:id="@+id/main_books"
+            android:layout_below="@+id/main_myfeed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bookoff"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:textColor="#ffffff"
-                android:text="글적 서적"
-                android:shadowColor="#000000"
-                android:shadowDx="1.0"
-                android:shadowDy="1.0"
-                android:shadowRadius="1.0"
-                android:textSize="18sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+            android:layout_height="142dp">
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/books_linear"
+                android:orientation="vertical"
+                android:background="@drawable/m4off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#ffffff"
+                    android:text="글적 서적"
+                    android:shadowColor="#000000"
+                    android:shadowDx="1.0"
+                    android:shadowDy="1.0"
+                    android:shadowRadius="1.0"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <View
+                android:layout_below="@+id/books_linear"
+                android:background="@drawable/shadow"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"></View>
+        </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
+
 
 </LinearLayout>

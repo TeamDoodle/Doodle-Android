@@ -29,8 +29,14 @@ class FeedActivity : AppCompatActivity() ,View.OnClickListener {
         viewPager!!.setCurrentItem(0)
         requestManager=Glide.with(this)
         requestManager!!.load(CommonData.loginData!!.profile.profile).into(profileImage!!)
+        myfeed_profileComment.setText(CommonData.loginData!!.profile.description)
+        requestManager!!.load(CommonData.loginData!!.profile.profile!!) .into(myfeed_profilePhoto)
+
         myfeed_writingName.text=CommonData.loginData!!.profile.nickname
-        myfeed_editProfile.setOnClickListener { startActivity(Intent(applicationContext,ProfileActivity::class.java)) }
+        myfeed_editProfile.setOnClickListener {
+            startActivityForResult(Intent(applicationContext,ProfileActivity::class.java), 1) }
+
+
     }
 
     override fun onClick(v: View?) {
@@ -55,6 +61,25 @@ class FeedActivity : AppCompatActivity() ,View.OnClickListener {
         }
 
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        //var description : String = "\"" + data!!.getStringExtra("description") + "\""
+        myfeed_profileComment.setText(data!!.getStringExtra("description"))
+
+        when(data!!.getIntExtra("flag", 1)){
+            1->{
+                return
+            }
+            2->{
+
+                requestManager=Glide.with(this)
+                requestManager!!.load(data!!.getStringExtra("profileimage")) .into(myfeed_profilePhoto)
+            }
+
+        }
+
+    }
+
 
 
 

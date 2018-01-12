@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -42,52 +43,90 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         networkService= ApplicationController.instance!!.networkService
 
-        signup_nickname.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                Log.d("afterTextChanged","afterTextChanged")
+//      회원가입 유효성 체크
+//        닉네임 중복체크
+        signup_nickname!!.addTextChangedListener(object:TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 duplicateCheck(1)
+
+            }
+        })
+//        이메일 중복체크
+        signup_email!!.addTextChangedListener(object :TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {
+
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                Log.d("beforeTextChanged","beforeTextChanged")
             }
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                Log.d("onTextChanged","onTextChanged")
+                duplicateCheck(2)
             }
 
         })
+//         비밀번호 유효성 체크
+        signup_password!!.addTextChangedListener(object :TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if(Pattern.matches("^[a-zA-Z0-9]*\$", signup_password.text.toString()))
+                {
+                    password_check.setImageResource(R.drawable.profileo)
+                }
+            }
 
-//        중복 체크 FocusChangeListener
-//        signup_nickname.onFocusChangeListener = object :View.OnFocusChangeListener{
-//
-//            override fun onFocusChange(p0: View?, p1: Boolean) {
-//                if(p1==false){
-//                    Toast.makeText(applicationContext,"nickname 포커스 바뀜",Toast.LENGTH_SHORT).show()
-//                    duplicateCheck(1)
-//                }
-//            }
-//        }
-//        signup_email.onFocusChangeListener=object :View.OnFocusChangeListener{
-//            override fun onFocusChange(p0: View?, p1: Boolean) {
-//                if(p1==false){
-//                    Toast.makeText(applicationContext,"email 포커스 바뀜",Toast.LENGTH_SHORT).show()
-//                    duplicateCheck(2)
-//
-//                }
-//            }
-//        }
-
+        })
+        signup_check_password!!.addTextChangedListener(object :TextWatcher{
+            override fun afterTextChanged(p0: Editable?) {}
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+               if (signup_password.text.toString().equals(signup_check_password.text.toString())){
+                    password_check_check.setImageResource(R.drawable.profileo)
+                }
+            }
+        })
 //        회원가입 버튼
         signup_button.setOnClickListener {
-        try{
-            signup()
+            if(signup_nickname.text.toString().equals("")&&signup_nickname.text.toString().length>9){
+                nickname_check.setImageResource(R.drawable.profilex)
+                Toast.makeText(applicationContext,"닉네임을 0~9자로 입력해주세요",Toast.LENGTH_SHORT).show()
+                signup_button.isClickable=false
+                return@setOnClickListener
+            }
+            else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(signup_email.text.toString()).matches()){
+                email_check.setImageResource(R.drawable.profilex)
+                Toast.makeText(applicationContext,"이메일 형식을 맞춰주세요",Toast.LENGTH_SHORT).show()
+                signup_button.isClickable=false
+                return@setOnClickListener
+            }
+            else if(!Pattern.matches("^[a-zA-Z0-9]*\$", signup_password.text.toString()))
+            {
+                password_check.setImageResource(R.drawable.profilex)
+                Toast.makeText(applicationContext,"비밀번호 형식을 맞춰주세요",Toast.LENGTH_SHORT).show()
+                signup_button.isClickable=false
+                return@setOnClickListener
+            }
+            else if(!signup_password.text.toString().equals(signup_check_password.text.toString())){
+                password_check_check.setImageResource(R.drawable.profilex)
+                Toast.makeText(applicationContext,"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show()
+                signup_button.isClickable=false
+                return@setOnClickListener
+            }
+            else{
+                try{
+                    signup()
 
-        } catch (e:Exception){
-            Toast.makeText(applicationContext,"프로필 사진을 지정해주세요",Toast.LENGTH_SHORT).show()
-        }
-            startActivity(Intent(applicationContext,LoginActivity::class.java))
-            finish()
+                } catch (e:Exception){
+                    Toast.makeText(applicationContext,"프로필 사진을 지정해주세요",Toast.LENGTH_SHORT).show()
+                    signup_button.isClickable=false
+                }
+                startActivity(Intent(applicationContext,LoginActivity::class.java))
+                finish()
+            }
+
         }
 
 //        프사 변경
@@ -98,31 +137,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 //    회원가입
     fun signup(){
-//    필명 유효성 검사
-    if(signup_nickname.text.toString().length<1 && signup_nickname.text.toString().length>8){
-        Toast.makeText(applicationContext,"1자에서 8자로 입력해주세요",Toast.LENGTH_SHORT).show()
-        signup_nickname.requestFocus()
-        return
-    }
-//    이메일 유효성 검사
-    else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(signup_email.text.toString()).matches()){
-        Toast.makeText(applicationContext,"이메일을 다시 확인해주세요",Toast.LENGTH_SHORT).show()
-        signup_email.requestFocus()
-        return
-    }
-//    비밀번호 유효성 검사
-    else if (!Pattern.matches("^[a-zA-Z0-9]*$$",signup_password.text.toString())){
-        Toast.makeText(applicationContext,"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show()
-        signup_password.requestFocus()
-        return
-    }
-    else if (signup_password.text.toString().length<8 && signup_password.text.toString().length>20){
-        Toast.makeText(applicationContext,"비밀번호를 다시 확인해주세요",Toast.LENGTH_SHORT).show()
-        signup_password.requestFocus()
-        return
-    }
-
-    else{
         val email=RequestBody.create(MediaType.parse("text/plain"),signup_email.text.toString())
         val pw1=RequestBody.create(MediaType.parse("text/plain"),signup_password.text.toString())
         val pw2=RequestBody.create(MediaType.parse("text/plain"),signup_check_password.text.toString())
@@ -144,29 +158,27 @@ class SignUpActivity : AppCompatActivity() {
             }
 
         })
-    }
+
 
 }
 
 //    필명 중복확인
-    fun duplicateCheck(flag:Int?){
+fun duplicateCheck(flag:Int?){
     Log.d("함수들어옴","함수 들어왔다 슈바")
 // 필명 중복확인
     if(flag==1){
-        val nickname=RequestBody.create(MediaType.parse("text/plain"),signup_nickname.text.toString())
-        val duplicateResponse=networkService!!.duplicate(nickname,RequestBody.create(MediaType.parse("text/plain"),""),flag!!)
+        val duplicateResponse=networkService!!
+                .duplicate(DuplicatePost(signup_nickname.text.toString(),signup_email.text.toString(),flag!!))
+
         duplicateResponse.enqueue(object : Callback<DuplicateResponse>{
             //            성공 시
             override fun onResponse(call: Call<DuplicateResponse>?, response: Response<DuplicateResponse>?) {
                 Log.d("onResponse",flag.toString())
                 if(response!!.isSuccessful){
-                    Log.d("isSuccessful","isSuccessful")
-                    if(response.body().status==200){
-                        ApplicationController.instance!!.makeToast("사용 가능")
-                    }
-                    else if(response.body().status==400){
-                        ApplicationController.instance!!.makeToast("중복됩니다ㅠㅠ")
-                    }
+                    nickname_check.setImageResource(R.drawable.profileo)
+                }else{
+                    nickname_check.setImageResource(R.drawable.profilex)
+                    ApplicationController.instance!!.makeToast("중복되는 필명입니다")
                 }
             }
 
@@ -180,19 +192,16 @@ class SignUpActivity : AppCompatActivity() {
 //    이메일 중복확인
     else if(flag==2){
         val email=RequestBody.create(MediaType.parse("text/plain"),signup_email.text.toString())
-        val duplicateResponse=networkService!!.duplicate(RequestBody.create(MediaType.parse("text/plain"),""),email,flag!!)
+        val duplicateResponse=networkService!!.duplicate(DuplicatePost(signup_nickname.text.toString(),signup_email.text.toString(),flag!!))
         duplicateResponse.enqueue(object : Callback<DuplicateResponse>{
             //            성공 시
             override fun onResponse(call: Call<DuplicateResponse>?, response: Response<DuplicateResponse>?) {
                 Log.d("onResponse",flag.toString())
                 if(response!!.isSuccessful){
-                    Log.d("isSuccessful","isSuccessful")
-                    if(response.body().status==200){
-                        ApplicationController.instance!!.makeToast("사용 가능")
-                    }
-                    else if(response.body().status==400){
-                        ApplicationController.instance!!.makeToast("중복됩니다ㅠㅠ")
-                    }
+                    email_check.setImageResource(R.drawable.profileo)
+                }else{
+                    email_check.setImageResource(R.drawable.profilex)
+                    ApplicationController.instance!!.makeToast("가입된 이메일 입니다")
                 }
             }
 
@@ -204,9 +213,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-
-    }
-
+}
 //    프로필 사진 변경
     fun changeImage(){
     val intent = Intent(Intent.ACTION_PICK)

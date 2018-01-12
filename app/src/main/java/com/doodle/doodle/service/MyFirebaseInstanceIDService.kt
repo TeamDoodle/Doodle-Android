@@ -25,8 +25,9 @@ class MyFirebaseInstanceIDService : FirebaseInstanceIdService() {
         sendRegistrationToServer(token)
     }
 
-    /*TODO : 서버한테 파이어베이스 토큰 보내는 통신 작성해야함*/
+
     private fun sendRegistrationToServer(token: String?) {
+        networkService = ApplicationController.instance!!.networkService
         val token = FirebaseInstanceId.getInstance().token
         val alarmResponse=networkService!!.alarm(AlarmPost(token.toString()))
         alarmResponse.enqueue(object : Callback<AlarmResponse>{

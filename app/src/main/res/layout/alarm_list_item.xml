@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.doodle.doodle.Alarm.AlarmActivity"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:id="@+id/alarm_all_lay">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:id="@+id/alarm_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/alarm_name"
+            android:text="박다영 "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#464646"
+            android:textSize="12sp"
+            android:fontFamily="@font/nanum_myeongjo_extra_bold"
+            android:layout_toRightOf="@id/alarm_img"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="14dp"/>
+
+        <TextView
+            android:id="@+id/alarm_description"
+            android:text="님이 회원님의 글에 공감했습니다."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#464646"
+            android:textSize="12sp"
+            android:layout_toRightOf="@id/alarm_name"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

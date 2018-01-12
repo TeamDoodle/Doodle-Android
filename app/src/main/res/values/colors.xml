@@ -23,4 +23,7 @@
     <color name="latte">#ffdd00</color>
     <color name="noel">#ff0000</color>
 
+    <!--투명색-->
+    <color name="transparent">#00000000</color>
+
 </resources>

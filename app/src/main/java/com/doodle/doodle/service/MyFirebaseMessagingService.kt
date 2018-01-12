@@ -16,17 +16,32 @@ import com.google.firebase.messaging.RemoteMessage
  */
 class MyFirebaseMessagingService : com.google.firebase.messaging.FirebaseMessagingService() {
 
+    private val alarmType = 1000
+
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
         //추가한것
 
         //remoteMessage : 서버에서준메세지
-        Log.i("message",remoteMessage!!.data.toString())
-        sendNotification(remoteMessage!!.data["title"].toString(),remoteMessage!!.data["body"].toString())
+        Log.i("message", remoteMessage!!.data.toString())
+        if (remoteMessage!!.data["type"]!!.toInt() == alarmType) {
+            sendNotification(remoteMessage!!.data["title"].toString(),
+                    remoteMessage!!.data["body"].toString(),
+                    remoteMessage!!.data["idx"]!!.toInt())
+        }
+        count()
     }
 
-    private fun sendNotification(title: String, body: String) {
-        //TODO 알람 액티비티 연결
+    //알람이 왔을 때 해당 알람 카운트 통신을 해서 badge 달아주는거
+    //activiy 실행하고 있을 시 알람 바꿔주기
+    private fun count() {
+
+
+    }
+
+    private fun sendNotification(title: String, body: String, idx: Int) {
+        //TODO 해당 게시글로 이동
         val intent = Intent(this, AlarmActivity::class.java)
+        intent.putExtra("idx",idx!!)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,

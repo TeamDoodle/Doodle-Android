@@ -8,58 +8,64 @@
     android:background="@drawable/basicbg"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+         android:layout_height="wrap_content">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="88dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="@font/nanum_myeongjo_extra_bold"
             android:text="회원 가입"
             android:textColor="#445061"
-            android:textSize="16dp" />
-    </LinearLayout>
+            android:textSize="16sp" />
+    </RelativeLayout>
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-<RelativeLayout
-    android:layout_width="80dp"
-    android:layout_height="80dp">
-    <ImageView
-        android:src="@drawable/frame4444"
-        android:layout_width="81dp"
-        android:layout_height="81dp" />
-    <ImageView
-        android:src="@drawable/profile"
-        android:id="@+id/signup_profile"
-        android:layout_width="78dp"
-        android:layout_height="78dp"
-        />
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/frame4444"
+                android:layout_width="104dp"
+                android:layout_height="104dp" />
+            <ImageView
+                android:src="@drawable/profile"
+                android:id="@+id/signup_profile"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/signup_change_picture"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="사진 변경"
-        android:textSize="12dp"
-        />
+            <TextView
+                android:layout_marginLeft="14dp"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/signup_change_picture"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="사진 변경"
+                android:textSize="12sp"
+                android:textColor="#464646"
+                />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
@@ -67,174 +73,237 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="35dp"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="필명"
-                android:layout_marginLeft="40dp"
-                android:textSize="12dp"
-                android:layout_marginTop="10dp"
-                />
-            <EditText
-                android:inputType="text"
-                android:id="@+id/signup_nickname"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="47dp"
-                android:hint="1자~8자"
-                android:textSize="12dp"
-                android:background="@null"
-                />
-            <ImageView
-                android:id="@+id/nickname_check"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/profilex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="필명"
+                    android:layout_marginLeft="35dp"
+                    android:textSize="12sp"
+                    android:textColor="#464646"
+                    />
+                <EditText
+                    android:singleLine="true"
+                    android:inputType="text"
+                    android:id="@+id/signup_nickname"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="130dp"
+                    android:hint="1자~8자"
+                    android:textSize="12sp"
+                    android:layout_marginRight="14dp"
+                    android:background="@null"
+                    />
+                <ImageView
+                    android:id="@+id/nickname_check"
+                    android:src="@drawable/profilex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
         <View
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="40dp"
-            android:background="#ACACAC"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="#80000000"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이메일"
-                android:layout_marginLeft="40dp"
-                android:textSize="12dp"
-                />
 
-            <EditText
-                android:id="@+id/signup_email"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="36dp"
-                android:hint="저작권을 위한 용도로 수집합니다"
-                android:textSize="12dp"
-                android:background="@null"
-                />
-            <ImageView
-                android:id="@+id/email_check"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/profilex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <View
-            android:layout_width="300dp"
-            android:layout_height="1dp"
-            android:layout_marginLeft="40dp"
-            android:background="#ACACAC"/>
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="25dp"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="비밀번호"
-                android:layout_marginLeft="40dp"
-                android:textSize="12dp"
-                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이메일"
+                    android:layout_marginLeft="35dp"
+                    android:textSize="12sp"
+                    android:textColor="#464646"
+                    />
+                <EditText
+                    android:singleLine="true"
+                    android:id="@+id/signup_email"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:hint="저작권을 위한 용도로 수집합니다"
+                    android:textSize="12sp"
+                    android:layout_marginRight="14dp"
+                    android:background="@null"
+                    android:layout_marginLeft="130dp"
+                    />
 
-            <EditText
-                android:inputType="textPassword"
-                android:id="@+id/signup_password"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="26dp"
-                android:hint="8자~20자,  영문/숫자"
-                android:textSize="12dp"
-                android:background="@null"
-                />
-            <ImageView
-                android:id="@+id/password_check"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/profilex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/email_check"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/profilex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
         </LinearLayout>
-
         <View
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="40dp"
-            android:background="#ACACAC"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="#80000000"/>
+
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="25dp"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="비밀번호 확인"
-                android:layout_marginLeft="40dp"
-                android:textSize="12dp"
-                />
 
-            <EditText
-                android:inputType="textPassword"
-                android:id="@+id/signup_check_password"
-                android:layout_width="196dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="3dp"
-                android:textSize="12dp"
-                android:background="@null"
-                />
-            <ImageView
-                android:id="@+id/password_check_check"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/profilex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호"
+                    android:layout_marginLeft="35dp"
+                    android:textSize="12sp"
+                    android:textColor="#464646"
+                    />
+
+                <EditText
+                    android:singleLine="true"
+                    android:inputType="textPassword"
+                    android:id="@+id/signup_password"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginRight="14dp"
+                    android:hint="8자~20자,  영문/숫자"
+                    android:textSize="12sp"
+                    android:background="@null"
+                    />
+                <ImageView
+                    android:id="@+id/password_check"
+                    android:src="@drawable/profilex"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
         </LinearLayout>
-
         <View
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="40dp"
-            android:background="#ACACAC"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="#80000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호 확인"
+                    android:layout_marginLeft="35dp"
+                    android:textSize="12sp"
+                    android:textColor="#464646"
+                    />
+
+                <EditText
+                    android:singleLine="true"
+                    android:inputType="textPassword"
+                    android:id="@+id/signup_check_password"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginRight="14dp"
+                    android:textSize="12sp"
+                    android:background="@null"
+                    />
+                <ImageView
+                    android:id="@+id/password_check_check"
+                    android:src="@drawable/profilex"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="#80000000"/>
+
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
         <ImageView
             android:src="@drawable/confirm"
             android:id="@+id/signup_button"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center_vertical"
+            android:layout_width="132dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
             />
 
-        <TextView
-            android:id="@+id/goto_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="기존 계정이 있으신가요?"
-            android:textSize="12dp"
-            android:layout_marginTop="40dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/goto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기존 계정이 있으신가요?"
+                android:textSize="12sp"
+                android:layout_marginTop="75dp"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/nanum_myeongjo_extra_bold"
+                android:textColor="#464646"
+                />
+        </RelativeLayout>
 
-            />
     </LinearLayout>
 
 

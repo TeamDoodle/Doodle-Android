@@ -40,7 +40,6 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        profile_back.setOnClickListener { startActivity(Intent(applicationContext,FeedActivity::class.java)) }
         networkService= ApplicationController.instance!!.networkService
         doesItChange=1
 

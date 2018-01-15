@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.doodle.doodle.R
+import kotlinx.android.synthetic.main.activity_doodle_book_one.*
 import kotlinx.android.synthetic.main.activity_doodle_book_two.*
 
 class DoodleBookTwoActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class DoodleBookTwoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_doodle_book_two)
 
         book2_back.setOnClickListener{
-            finish()
+            startActivity(Intent(applicationContext,BookActivity::class.java))
         }
         doodle_book_two.setOnClickListener{
             var intent = Intent(this, OrderActivity::class.java)

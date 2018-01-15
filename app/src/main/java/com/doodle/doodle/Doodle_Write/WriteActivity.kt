@@ -61,13 +61,10 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
         var flag: Boolean? = null
         flag = true
 
-        write_splash.setOnClickListener {
-            write_splash.visibility=View.GONE
-        }
-
         write_menu_content!!.startAnimation(animHide)
         write_menu_top!!.animate().translationY(0F)
-//
+
+        TodayImage()
 //        사진 정방형으로
         params = write_image_layout!!.layoutParams
         params!!.width = resources.displayMetrics.widthPixels
@@ -96,7 +93,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
                 write_indicator.setImageResource(R.drawable.up)
                 write_menu_content!!.startAnimation(animHide)
                 write_menu_content!!.visibility = View.GONE
-                write_menu_top!!.animate().translationY((write_menu.height-write_menu_top.height).toFloat())
+                write_menu_top!!.animate().translationY((write_menu.height - write_menu_top.height).toFloat())
                 flag = false
             } else {
                 write_indicator.setImageResource(R.drawable.down)
@@ -142,7 +139,7 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
 //        줄 간격
         write_seekbar_linespace!!.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                write_edit.setLineSpacing(0F, (p1 / 200 + 1).toFloat())
+                write_edit.setLineSpacing(0F, (p1 / 500 + 1).toFloat())
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -172,14 +169,6 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
             write_edit!!.isFocusable
         }
 
-//        오늘의 이미지
-        write_todaypic.setOnClickListener {
-            write_filter_layout.visibility = View.GONE
-            write_change_font_layout.visibility = View.GONE
-
-
-        }
-
 //         앨범 접근 해서 사진 가져오기
         goto_album.setOnClickListener {
             changeImage()
@@ -198,6 +187,9 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
         requestManager = Glide.with(this)
         write_todaypic.setOnClickListener {
             TodayImage()
+            write_filter_layout.visibility = View.GONE
+            write_change_font_layout.visibility = View.GONE
+            filter.visibility = View.GONE
         }
 
         fun postpost() {
@@ -209,7 +201,6 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
                     if (response!!.isSuccessful) {
                         if (response!!.body().message.equals("success")) {
                             ApplicationController.instance!!.makeToast("작성 완료")
-                            startActivity(Intent(applicationContext, MainActivity::class.java))
                             finish()
                         } else {
                             ApplicationController.instance!!.makeToast("작성 실패")
@@ -225,12 +216,11 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
 
         }
 
+
 //       완료 버튼
         write_commit.setOnClickListener {
-
             write_edit.bringToFront()
             write_edit.clearFocus()
-            Toast.makeText(applicationContext, "완료", Toast.LENGTH_SHORT).show()
             write_image_layout.isDrawingCacheEnabled = true
             write_image_layout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                     View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED))
@@ -359,7 +349,6 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
     override fun onClick(v: View?) {
         when (v) {
             color1 -> {
-                Toast.makeText(applicationContext, "안녕", Toast.LENGTH_SHORT).show()
                 write_edit.setTextColor(resources.getColor(R.color.color1))
             }
             color2 -> {
@@ -464,8 +453,6 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
             }
         })
     }
-
-
 
 
 }

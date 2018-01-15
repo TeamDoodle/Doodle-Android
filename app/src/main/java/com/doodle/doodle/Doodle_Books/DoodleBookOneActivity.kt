@@ -13,7 +13,7 @@ class DoodleBookOneActivity : AppCompatActivity() {
         setContentView(R.layout.activity_doodle_book_one)
 
         book1_back.setOnClickListener{
-            finish()
+            startActivity(Intent(applicationContext,BookActivity::class.java))
         }
         doodle_book_one.setOnClickListener{
             var intent =Intent(this, OrderActivity::class.java)

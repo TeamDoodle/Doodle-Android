@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import com.doodle.doodle.R
+import kotlinx.android.synthetic.main.fragment_book.view.*
 
 
 class CarouselPagerAdapter(private val context: BookActivity, private val fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager), ViewPager.OnPageChangeListener {
@@ -70,7 +71,7 @@ class CarouselPagerAdapter(private val context: BookActivity, private val fragme
 
     private fun getRootView(position: Int): CarouselLinearLayout {
         return fragmentManager.findFragmentByTag(this.getFragmentTag(position))
-                .view!!.findViewById(R.id.root_container) as CarouselLinearLayout
+                .view!!.root_container
     }
 
     private fun getFragmentTag(position: Int): String {

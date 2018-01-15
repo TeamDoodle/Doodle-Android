@@ -29,7 +29,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="알람"
+                    android:text="알림"
                     android:textColor="#445061"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -85,10 +85,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_myeongjo_extra_bold"
-                    android:text="새 알람"
+                    android:text="새 알림"
                     android:textColor="#445061"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="25dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="28dp"
+                    />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/alarm_recycler_new"
@@ -108,23 +112,28 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginVertical="25dp"
-                    android:background="#80707070" />
+                    android:background="#80707070"
+                    />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_myeongjo_extra_bold"
-                    android:text="이전 알람"
+                    android:text="이전 알림"
                     android:textColor="#445061"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="25dp"
+                    />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/alarm_recycler_old"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:nestedScrollingEnabled="false">
+                    android:nestedScrollingEnabled="false"
+                    >
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>

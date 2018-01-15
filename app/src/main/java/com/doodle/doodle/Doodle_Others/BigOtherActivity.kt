@@ -1,6 +1,7 @@
 package com.doodle.doodle.Doodle_Others
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.AppLaunchChecker
@@ -13,6 +14,7 @@ import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
 import kotlinx.android.synthetic.main.activity_big_other.*
+import kotlinx.android.synthetic.main.activity_other.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +38,7 @@ class BigOtherActivity : AppCompatActivity() {
         doodleList = ArrayList<userDoodleData>()
 
         requestManager = Glide.with(this)
-
+        big_back.setOnClickListener { startActivity(Intent(applicationContext,OtherActivity::class.java)) }
         bigOtherAdapter = BigOtherAdapter(this, doodleList!!, requestManager!!)
         BigOtherRecyclerView = findViewById(R.id.big_other_recyclerview)
         val layoutManager:LinearLayoutManager= LinearLayoutManager(this)
@@ -51,7 +53,7 @@ class BigOtherActivity : AppCompatActivity() {
         otherResponse.enqueue(object : Callback<OtherResponse> {
             override fun onResponse(call: Call<OtherResponse>?, response: Response<OtherResponse>?) {
                 if (response!!.isSuccessful) {
-                    Log.d("success", "success")
+
                     doodleUserList=response.body().result.user
                     if(response.body().result.user.profile==null){
                         requestManager!!.load(R.drawable.profile).into(big_other_profile)

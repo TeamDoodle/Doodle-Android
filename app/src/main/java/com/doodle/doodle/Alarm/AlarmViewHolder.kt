@@ -2,6 +2,7 @@ package com.doodle.doodle.Alarm
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.doodle.doodle.R
@@ -11,9 +12,8 @@ import com.doodle.doodle.R
  */
 class AlarmViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
-    //TODO userImage 이미지뷰로 바꾸기
     var description: TextView =itemView!!.findViewById(R.id.alarm_description)
     var userName: TextView =itemView!!.findViewById(R.id.alarm_name)
     var allLay: LinearLayout = itemView!!.findViewById(R.id.alarm_all_lay)
-
+    var userImage: ImageView=itemView!!.findViewById(R.id.alarm_img)
 }

@@ -4,15 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.doodle.doodle.Doodle_Comment.CommentActivity
 import com.doodle.doodle.Doodle_Me.BigFeedViewHolder
 import com.doodle.doodle.Doodle_Read.FeedList
 import com.doodle.doodle.Like.LikePost
 import com.doodle.doodle.Like.LikeResponse
+import com.doodle.doodle.Login.CommonData
 import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
@@ -25,23 +28,24 @@ import retrofit2.Response
 /**
  * Created by Jinyoung on 2018-01-11.
  */
-class BigOtherAdapter(var con:Context,var doodleList: ArrayList<userDoodleData>,
+class BigOtherAdapter(var con: Context, var doodleList: ArrayList<userDoodleData>,
                       var requestManager: RequestManager
-) : RecyclerView.Adapter<BigOtherViewHolder>()  {
-    private var networkService:NetworkService?=null
-    fun setAdapter(doodleList: ArrayList<userDoodleData>){
-        this.doodleList=doodleList
+) : RecyclerView.Adapter<BigOtherViewHolder>() {
+    private var networkService: NetworkService? = null
+    fun setAdapter(doodleList: ArrayList<userDoodleData>) {
+        this.doodleList = doodleList
     }
     override fun onBindViewHolder(holder: BigOtherViewHolder?, position: Int) {
-        if(doodleList!![position].image==null){
+        requestManager= Glide.with(con!!)
+        if (doodleList!![position].image == null) {
             requestManager!!.load(R.drawable.mytext2).into(holder!!.BigOtherImage)
-        }else{
+        } else {
             requestManager!!.load(doodleList!![position].image).into(holder!!.BigOtherImage)
         }
-        holder!!.BigOtherDate.text=doodleList!![position].created
-        holder!!.BigOtherLikeCount.text=doodleList!![position].like_count.toString()
-        holder!!.BigOtherScrapCount.text=doodleList!![position].scrap_count.toString()
-        holder!!.BigOtherCommentCount.text=doodleList!![position].comment_count.toString()
+        holder!!.BigOtherDate.text = doodleList!![position].created
+        holder!!.BigOtherLikeCount.text = doodleList!![position].like_count.toString()
+        holder!!.BigOtherScrapCount.text = doodleList!![position].scrap_count.toString()
+        holder!!.BigOtherCommentCount.text = doodleList!![position].comment_count.toString()
 
         //좋아요 된거 굵은 글씨로 표시할 때 (Feed 불러올 때)
         if (doodleList!![position].like !== 0) {
@@ -60,12 +64,13 @@ class BigOtherAdapter(var con:Context,var doodleList: ArrayList<userDoodleData>,
             } else {
                 likeString = "like"
             }
+            networkService = ApplicationController.instance!!.networkService
             var getLike = networkService!!.like(getToken("token"), doodleList!![position].idx!!, LikePost(likeString!!))
             getLike.enqueue(object : Callback<LikeResponse> {
                 override fun onResponse(call: Call<LikeResponse>?, response: Response<LikeResponse>?) {
                     if (response!!.isSuccessful) {
                         if (doodleList!![position].like != 0) {
-                            doodleList!![position].like =0
+                            doodleList!![position].like = 0
                         } else {
                             doodleList!![position].like = doodleList!![position].idx
                         }
@@ -102,44 +107,47 @@ class BigOtherAdapter(var con:Context,var doodleList: ArrayList<userDoodleData>,
 //       담아감
         holder!!.BigOtherScrap.setOnClickListener {
             //            통신 시작
-            var scrapString: String? = null
-            if (doodleList!![position].scraps != 0) {
-//                flag=4는 scrap에 담겨 있는 글
-                scrapString = "unscrap"
-            } else {
-                scrapString = "scrap"
+            if(!doodleList!![position].scraps!!.equals(CommonData.loginData!!.profile.nickname)){
+                var scrapString: String? = null
+                Log.d("fat",doodleList.get(position).toString())
+                scrapString = if (doodleList!![position].scraps != 0) {
+                    "unscrap"
+                } else {
+                    "scrap"
+                }
 
-            }
-
-            var getScrap = networkService!!.scrap(getToken("token"), doodleList!![position].idx!!, ScrapPost(scrapString!!))
-            getScrap.enqueue(object : Callback<ScrapResponse> {
-                override fun onResponse(call: Call<ScrapResponse>?, response: Response<ScrapResponse>?) {
-                    if(response!!.isSuccessful){
+                networkService = ApplicationController.instance!!.networkService
+                var getScrap = networkService!!.scrap(getToken("token"), doodleList!![position].idx!!, ScrapPost(scrapString!!))
+                getScrap.enqueue(object : Callback<ScrapResponse> {
+                    override fun onResponse(call: Call<ScrapResponse>?, response: Response<ScrapResponse>?) {
+                        if (response!!.isSuccessful) {
 //                        doodleList!![position].scrap_count=response.body().result.count
-                        if(doodleList!![position].scraps!=0){
-                            doodleList!![position].scraps==0
+                            if (doodleList!![position].scraps != 0) {
+                                doodleList!![position].scraps = 0
 //                            doodleList!!.remove(doodleList!!.get(position))
 //                            notifyItemRemoved(position)
-                        }else{
-                            doodleList!![position].scraps=doodleList!![position].idx
-                        }
-                           doodleList!![position].scrap_count=response.body().result.count
+                            } else {
+                                doodleList!![position].scraps = doodleList!![position].idx
+                            }
+                            doodleList!![position].scrap_count = response.body().result.count
                             notifyItemChanged(position)
 
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<ScrapResponse>?, t: Throwable?) {
-                    ApplicationController.instance!!.makeToast("서버상태를 확인해 주세요")
-                }
-            })
+                    override fun onFailure(call: Call<ScrapResponse>?, t: Throwable?) {
+                        ApplicationController.instance!!.makeToast("서버상태를 확인해 주세요")
+                    }
+                })
+            }
+
         }
 
 //        담아감 끝
 
     }
 
-    override fun getItemCount(): Int =doodleList!!.size
+    override fun getItemCount(): Int = doodleList!!.size
     private var onItemClick: View.OnClickListener? = null
 
     fun setOnItemClickListener(l: View.OnClickListener) {
@@ -147,18 +155,17 @@ class BigOtherAdapter(var con:Context,var doodleList: ArrayList<userDoodleData>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BigOtherViewHolder {
-        val mainView:View=LayoutInflater.from(parent!!.context)
-                .inflate(R.layout.big_other_item,parent,false)
+        val mainView: View = LayoutInflater.from(parent!!.context)
+                .inflate(R.layout.big_other_item, parent, false)
         mainView.setOnClickListener(onItemClick)
         return BigOtherViewHolder(mainView)
     }
 
 
-
-//    통신
+    //    통신
 //  토큰 받아오는 함수
-fun getToken(key: String): String {
-    val prefs = con!!.getSharedPreferences("token", Context.MODE_PRIVATE)
-    return prefs.getString(key, "")
-}
+    fun getToken(key: String): String {
+        val prefs = con!!.getSharedPreferences("token", Context.MODE_PRIVATE)
+        return prefs.getString(key, "")
+    }
 }

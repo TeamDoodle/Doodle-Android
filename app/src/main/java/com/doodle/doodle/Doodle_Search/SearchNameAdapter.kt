@@ -29,7 +29,6 @@ class SearchNameAdapter(var con:Context,private var dataList:ArrayList<SearchNam
         holder!!.userName.text = dataList!![position].nickname
 //        Log.i("fat",position.toString())
         holder!!.userImage.setOnClickListener {
-            Toast.makeText(con!!,"슈밤",Toast.LENGTH_SHORT).show()
             val intent:Intent= Intent(con!!,OtherActivity::class.java)
             intent.putExtra("user_idx",dataList!![position].idx)
             con!!.startActivity(intent)

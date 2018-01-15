@@ -2,12 +2,14 @@ package com.doodle.doodle.Network
 
 import android.support.annotation.Nullable
 import com.doodle.doodle.Alarm.AlarmClickData
+import com.doodle.doodle.service.AlarmCountResult
 import com.doodle.doodle.Alarm.AlarmItemResult
 import com.doodle.doodle.Alarm.AlarmResult
 import com.doodle.doodle.Doodle_Comment.CommentPostResponse
 import com.doodle.doodle.Doodle_Comment.CommentResponse
 import com.doodle.doodle.Doodle_Comment.PostCommentPost
 import com.doodle.doodle.Doodle_Me.DeleteResponse
+import com.doodle.doodle.Doodle_Me.GetProfileResponse
 import com.doodle.doodle.Doodle_Me.PutProfileResponse
 import com.doodle.doodle.Doodle_Others.OtherResponse
 import com.doodle.doodle.Doodle_Read.GetFeedPost
@@ -53,7 +55,7 @@ interface NetworkService {
 
     //    회원가입 (이메일/필명) 중복체크
     @POST("users/duplicates")
-    fun duplicate(@Body duplicatePost: DuplicatePost):Call<DuplicateResponse>
+    fun duplicate(@Body duplicatePost: DuplicatePost): Call<DuplicateResponse>
 
     //    게시글 리스트 조회
     @POST("doodle/all")
@@ -140,16 +142,16 @@ interface NetworkService {
     //    게시글 삭제(나의 글)
     @DELETE("doodle/delete/{idx}")
     fun delete(
-            @Header("token")token:String,
+            @Header("token") token: String,
             @Path("idx") idx: Int): Call<DeleteResponse>
 
-//      상세 페이지
+    //      상세 페이지
     @GET("doodle/get/{idx}")
     fun single(
-        @Header("token")token: String,
-        @Path("idx")idx:Int):Call<SingleResponse>
+            @Header("token") token: String,
+            @Path("idx") idx: Int): Call<SingleResponse>
 
-//알람 리스트 조회
+    //알람 리스트 조회
     @GET("alarm/list")
     fun getAlarmList(
             @Header("token") token: String
@@ -158,7 +160,20 @@ interface NetworkService {
     //알람 아이템 클릭
     @POST("alarm/item")
     fun alarmItemClick(
-            @Header("token") token:String,
+            @Header("token") token: String,
             @Body alarmClickData: AlarmClickData
     ): Call<AlarmItemResult>
+
+    //알람 카운트
+    @GET("alarm/count")
+    fun alarmCount(
+            @Header("token") token: String
+    ): Call<AlarmCountResult>
+
+    //    프로필 조회
+    @GET("users")
+    fun getProfile(
+            @Header("token") token: String
+    ):Call<GetProfileResponse>
+
 }

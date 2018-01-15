@@ -8,6 +8,7 @@ import com.doodle.doodle.Doodle_Books.BookActivity
 import com.doodle.doodle.Doodle_Me.FeedActivity
 import com.doodle.doodle.Doodle_Read.AppreciateActivity
 import com.doodle.doodle.Doodle_Write.WriteActivity
+import com.doodle.doodle.Doodle_Write.WriteSplashActivity
 import com.doodle.doodle.R
 import com.doodle.doodle.Settings.SettingActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 //        글 작성
         write_linear.setOnClickListener {
             write_linear.setBackgroundResource(R.drawable.m1on)
-            startActivity(Intent(applicationContext,WriteActivity::class.java))
+            startActivity(Intent(applicationContext,WriteSplashActivity::class.java))
 
         }
 

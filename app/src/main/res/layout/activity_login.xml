@@ -28,6 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:singleLine="true"
                     android:layout_alignBottom="@+id/email"
                     android:layout_toRightOf="@+id/email"
                     android:id="@+id/login_email"
@@ -51,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:singleLine="true"
                     android:layout_toRightOf="@+id/password"
                     android:layout_alignBottom="@+id/password"
                     android:inputType="textPassword"

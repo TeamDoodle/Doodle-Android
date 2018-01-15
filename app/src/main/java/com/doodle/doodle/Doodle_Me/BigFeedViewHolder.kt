@@ -3,6 +3,7 @@ package com.doodle.doodle.Doodle_Me
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.doodle.doodle.R
 import org.w3c.dom.Text
@@ -25,4 +26,5 @@ class BigFeedViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
     var bigNickname:TextView=itemView!!.findViewById(R.id.big_nickname)
     var image_save:TextView=itemView!!.findViewById(R.id.image_save)
     var image_delete:TextView=itemView!!.findViewById(R.id.image_delete)
+    var linear: LinearLayout =itemView!!.findViewById(R.id.linear)
 }

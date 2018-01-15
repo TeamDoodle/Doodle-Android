@@ -81,7 +81,6 @@ class AppreciateFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         val idx : Int = weekRecyclerview!!.getChildAdapterPosition(v)
         val feedType : Int = 1
-        Log.d("ㅇ러니아러니ㅏ어졸려","ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ")
         when(v){
             like->{
                 Log.d("a","aa")

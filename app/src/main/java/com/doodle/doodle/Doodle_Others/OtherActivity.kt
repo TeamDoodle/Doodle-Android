@@ -40,6 +40,7 @@ class OtherActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other)
         networkService= ApplicationController.instance!!.networkService
+//
         user_idx=intent.getIntExtra("user_idx",0)
         otherList=ArrayList()
         requestManager= Glide.with(this)
@@ -64,6 +65,8 @@ class OtherActivity : AppCompatActivity(),View.OnClickListener {
         otherResponse.enqueue(object : Callback<OtherResponse> {
             override fun onResponse(call: Call<OtherResponse>?, response: Response<OtherResponse>?) {
                 if (response!!.isSuccessful){
+                    other_posting.text=response.body().result.user.doodle_count.toString()
+                    other_scrap.text=response.body().result.user.scrap_count.toString()
                     Log.d("success","success")
                     otherList=response.body().result.doodle
                     requestManager!!.load(response.body().result.user.profile!!).into(other_profile!!)

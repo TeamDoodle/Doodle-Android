@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:gravity="center"
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,29 +7,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/basicbg"
     android:orientation="vertical">
-<LinearLayout
-    android:layout_marginBottom="40dp"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:shadowColor="@color/maincolor"
-        android:layout_width="wrap_content"
+
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="글적"
-        android:textSize="45dp"
-        android:layout_gravity="center"
+        android:src="@drawable/splash"
+        android:layout_marginTop="270dp"
         />
 
-    <TextView
-        android:shadowColor="@color/maincolor"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="당신의 끄적임이 글이 되는 이곳"
-        android:textSize="15dp"
-        android:layout_gravity="center"
-        />
+
 </LinearLayout>
-
-</RelativeLayout>

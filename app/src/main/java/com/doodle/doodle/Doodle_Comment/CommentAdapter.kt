@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.doodle.doodle.R
 
@@ -15,7 +16,6 @@ class CommentAdapter(var commentList: ArrayList<CommentList> , var requestManage
     override fun getItemCount(): Int = commentList.size
 
     override fun onBindViewHolder(holder: CommentViewHolder?, position: Int) {
-
         if(commentList!!.get(position).profile==null){
             requestManager!!.load(R.drawable.mytext1).into(holder!!.commentImage)
         }else{

@@ -9,15 +9,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.doodle.doodle.Main.MainActivity
 import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
+import kotlinx.android.synthetic.main.activity_alarm.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class AlarmActivity : AppCompatActivity() {
-
     private var alarmRecyclerViewNew: RecyclerView? = null
     private var alarmRecyclerViewOld: RecyclerView? = null
     private var linearLayoutManagerNew: LinearLayoutManager? = null
@@ -29,14 +30,14 @@ class AlarmActivity : AppCompatActivity() {
     private var alarmDataOld: ArrayList<AlarmData>? = null
     private var requestManager: RequestManager? = null
     private var pref: SharedPreferences? = null
-    private var token: String? =null
+    private var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
 
         pref = getSharedPreferences("token", Context.MODE_PRIVATE)
-        token = pref!!.getString("token","")
+        token = pref!!.getString("token", "")
 
         alarmRecyclerViewNew = findViewById(R.id.alarm_recycler_new)
         alarmRecyclerViewOld = findViewById(R.id.alarm_recycler_old)
@@ -52,8 +53,8 @@ class AlarmActivity : AppCompatActivity() {
         linearLayoutManagerOld = LinearLayoutManager(this)
         linearLayoutManagerOld!!.orientation = LinearLayoutManager.VERTICAL
 
-        alarmRecyclerViewNew!!.layoutManager=linearLayoutManagerNew
-        alarmRecyclerViewOld!!.layoutManager=linearLayoutManagerOld
+        alarmRecyclerViewNew!!.layoutManager = linearLayoutManagerNew
+        alarmRecyclerViewOld!!.layoutManager = linearLayoutManagerOld
 
         requestManager = Glide.with(this)
 
@@ -71,7 +72,7 @@ class AlarmActivity : AppCompatActivity() {
         alarmRecyclerViewOld!!.adapter = alarmAdapterOld
 
         networking()
-
+        main_alarm.setOnClickListener { startActivity(Intent(applicationContext,MainActivity::class.java)) }
     }
 
     fun networking() {
@@ -80,13 +81,17 @@ class AlarmActivity : AppCompatActivity() {
             override fun onResponse(call: Call<AlarmResult>?, response: Response<AlarmResult>?) {
                 if (response!!.isSuccessful) {
                     if (response.body().status == 200) {
-                        alarmDataNew = response.body().result.not_read
-                        alarmAdapterNew!!.setAdapter(alarmDataNew!!)
-                        alarmAdapterNew!!.notifyDataSetChanged()
+                        try{
+                            alarmDataNew = response.body().result.not_read
+                            alarmAdapterNew!!.setAdapter(alarmDataNew!!)
+                            alarmAdapterNew!!.notifyDataSetChanged()
 
-                        alarmDataOld = response.body().result.is_read
-                        alarmAdapterOld!!.setAdapter(alarmDataOld!!)
-                        alarmAdapterOld!!.notifyDataSetChanged()
+                            alarmDataOld = response.body().result.is_read
+                            alarmAdapterOld!!.setAdapter(alarmDataOld!!)
+                            alarmAdapterOld!!.notifyDataSetChanged()
+                        } catch(e: KotlinNullPointerException){
+                            e.printStackTrace()
+                        }
 
                     } else {
                         ApplicationController.instance!!.makeToast("검색실패")

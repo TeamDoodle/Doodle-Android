@@ -14,22 +14,25 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical">
+
         <RelativeLayout
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:gravity="center"
             android:orientation="vertical">
+
             <RelativeLayout
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
                 <TextView
-                    android:textColor="#445061"
-                    android:textStyle="bold"
-                    android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="댓글" />
+                    android:text="댓글"
+                    android:textColor="#445061"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -37,14 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:src="@drawable/back"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/main_alarm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="30dp" />
+
 
             </RelativeLayout>
 
@@ -52,17 +48,17 @@
         </RelativeLayout>
 
     </LinearLayout>
-    <View
-        android:background="#707070"
-        android:layout_width="match_parent"
-        android:layout_height="1dp">  </View>
-    <View
-        android:layout_marginTop="2dp"
-        android:background="#707070"
-        android:layout_width="match_parent"
-        android:layout_height="1dp">
-    </View>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#707070"></View>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="#707070"></View>
 
 
     <LinearLayout
@@ -73,38 +69,38 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/frame4444"
-        android:layout_width="63dp"
-        android:layout_height="63dp" />
-    <RelativeLayout
-        android:gravity="center"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/comment_profile"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:src="@drawable/userprofile" />
-    </RelativeLayout>
 
-</RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
+                <RelativeLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/frame4040"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/comment_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/userprofile" />
+                </RelativeLayout>
+
+            </RelativeLayout>
 
 
             <TextView
-                android:fontFamily="@font/nanum_myeongjo_extra_bold"
+                android:id="@+id/comment_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="14dp"
                 android:layout_marginTop="49dp"
+                android:fontFamily="@font/nanum_myeongjo_extra_bold"
                 android:text="새벽두시"
                 android:textColor="#464646"
                 android:textSize="14dp" />
@@ -161,10 +157,11 @@
                 android:textSize="10dp" />
 
             <TextView
-                android:fontFamily="@font/nanum_myeongjo_extra_bold"
+                android:id="@+id/comment_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="107dp"
+                android:fontFamily="@font/nanum_myeongjo_extra_bold"
                 android:text="2017년 12월 28일"
                 android:textSize="10dp" />
 
@@ -181,10 +178,10 @@
 
 
     <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/comment_swipe"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/comment_swipe">
+        android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/comment_recycler"

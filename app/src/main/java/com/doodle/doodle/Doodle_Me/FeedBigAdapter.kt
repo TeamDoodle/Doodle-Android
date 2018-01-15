@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.doodle.doodle.Doodle_Comment.CommentActivity
 import com.doodle.doodle.Doodle_Others.OtherActivity
@@ -70,6 +71,7 @@ class FeedBigAdapter(var con: Context,
         networkService = ApplicationController.instance!!.networkService
         var likeString: String? = null
 //        사진
+        requestManager= Glide.with(con!!)
         if (postList!!.get(position).image == null) {
             requestManager!!.load(R.drawable.mytext1).into(holder!!.postBigImage)
         } else {
@@ -210,48 +212,7 @@ class FeedBigAdapter(var con: Context,
         holder!!.bigComment_count.text = postList!!.get(position).comment_count.toString()
 //        댓글 끝
 
-        //담아감 된거 굵은 글씨로 표시할 때 (Feed 불러올 때)
-        if (postList!![position].scraps !== 0) {
-            holder!!.bigScrap.typeface =
-                    Typeface.createFromAsset(con!!.assets, "fonts/nanum_myeongjo_extra_bold.ttf")
-        } else {
-            holder!!.bigScrap.typeface =
-                    Typeface.createFromAsset(con!!.assets, "fonts/nanum_myeongjo.ttf")
-        }
-//       담아감
-        holder!!.bigScrap.setOnClickListener {
-            //            통신 시작
-            var scrapString: String? = null
-            if (postList!![position].scraps != 0 || flag==4) {
-//                flag=4는 scrap에 담겨 있는 글
-                scrapString = "unscrap"
-            } else {
-                scrapString = "scrap"
-            }
-            var getScrap = networkService!!.scrap(getToken("token"), postList!![position].idx!!, ScrapPost(scrapString!!))
-            getScrap.enqueue(object : Callback<ScrapResponse> {
-                override fun onResponse(call: Call<ScrapResponse>?, response: Response<ScrapResponse>?) {
-                    if(response!!.isSuccessful){
-                        postList!![position].scrap_count=response.body().result.count
-                        if(postList!![position].scraps!=0){
-                            postList!![position].scraps=0
-                            postList!!.remove(postList!!.get(position))
-                            notifyItemRemoved(position)
-                        }else{
-                            postList!![position].scraps=postList!![position].idx
-                            notifyItemChanged(position)
 
-                        }
-                    }
-                }
-
-                override fun onFailure(call: Call<ScrapResponse>?, t: Throwable?) {
-                    ApplicationController.instance!!.makeToast("서버상태를 확인해 주세요")
-                }
-            })
-        }
-
-//        담아감 끝
     }
 
 

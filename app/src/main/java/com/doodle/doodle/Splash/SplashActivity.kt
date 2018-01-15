@@ -18,6 +18,7 @@ import com.doodle.doodle.Login.LoginResponse
 import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
+import com.doodle.doodle.Tutorial.TutorialActivity
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -42,6 +43,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
         networkService = ApplicationController.instance!!.networkService
         networkService = ApplicationController.instance!!.networkService
         sharedPreference = getSharedPreferences("token", Context.MODE_PRIVATE)
@@ -52,6 +54,17 @@ class SplashActivity : AppCompatActivity() {
 
         email = sharedPreference_login!!.getString("email", "")
         pw = sharedPreference_login!!.getString("pw", "")
+
+        sharedPreference = getSharedPreferences("first", Context.MODE_PRIVATE)
+        editor = sharedPreference!!.edit()
+        editor!!.putString("first","first")
+        editor!!.commit()
+
+//        if(sharedPreference!!.getString("first","").equals("first")){
+//            startActivity(Intent(applicationContext,TutorialActivity::class.java))
+//            editor!!.putString("first","second")
+//            editor!!.commit()
+//        }
 
         if (Build.VERSION.SDK_INT >= 23) {
             //do your check here
@@ -148,6 +161,7 @@ class SplashActivity : AppCompatActivity() {
             }
             startActivity(intent)
             finish()
+            overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
         }, 1000)
     }
 
@@ -174,8 +188,6 @@ class SplashActivity : AppCompatActivity() {
                         editor_login!!.commit()
 
                         Log.d("token", response.body().result.token)
-                        ApplicationController.instance!!.makeToast("로그인 성공")
-                        startActivity(Intent(applicationContext, MainActivity::class.java))
                     } else {
                         ApplicationController.instance!!.makeToast("이메일과 비번을 다시 확인해주세요")
                     }

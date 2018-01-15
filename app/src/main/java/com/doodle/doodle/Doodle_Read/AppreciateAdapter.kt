@@ -15,6 +15,7 @@ import com.doodle.doodle.Doodle_Me.CommonFeedData
 import com.doodle.doodle.Doodle_Others.OtherActivity
 import com.doodle.doodle.Like.LikePost
 import com.doodle.doodle.Like.LikeResponse
+import com.doodle.doodle.Login.CommonData
 import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
@@ -87,31 +88,35 @@ class AppreciateAdapter(var con:Context,var feedList : ArrayList<FeedList>,var r
 //          담아감
         holder!!.scrap.setOnClickListener {
             //            통신 시작
-            var scrapString: String? = null
-            if (feedList!![position].scraps != 0 ) {
+            if(!feedList!!.get(position).nickname.equals(CommonData.loginData!!.profile.nickname)){
+                var scrapString: String? = null
+                if (feedList!![position].scraps != 0 ) {
 //                flag=4는 scrap에 담겨 있는 글
-                scrapString = "unscrap"
-            } else {
-                scrapString = "scrap"
-            }
-            var getScrap = networkService!!.scrap(getToken("token"), feedList!![position].idx!!, ScrapPost(scrapString!!))
-            getScrap.enqueue(object : Callback<ScrapResponse> {
-                override fun onResponse(call: Call<ScrapResponse>?, response: Response<ScrapResponse>?) {
-                    if(response!!.isSuccessful){
-                        if(feedList!![position].scraps!=0){
-                            feedList!![position].scraps=0
-                        }else{
-                            feedList!![position].scraps=feedList!![position].idx
-                        }
-                        feedList!![position].scrap_count=response.body().result.count
-                        notifyItemChanged(position)
-                    }
+                    scrapString = "unscrap"
+                } else {
+                    scrapString = "scrap"
                 }
+                var getScrap = networkService!!.scrap(getToken("token"), feedList!![position].idx!!, ScrapPost(scrapString!!))
+                getScrap.enqueue(object : Callback<ScrapResponse> {
+                    override fun onResponse(call: Call<ScrapResponse>?, response: Response<ScrapResponse>?) {
 
-                override fun onFailure(call: Call<ScrapResponse>?, t: Throwable?) {
-                    ApplicationController.instance!!.makeToast("서버상태를 확인해 주세요")
-                }
-            })
+                        if(response!!.isSuccessful){
+                            if(feedList!![position].scraps!=0){
+                                feedList!![position].scraps=0
+                            }else{
+                                feedList!![position].scraps=feedList!![position].idx
+                            }
+                            feedList!![position].scrap_count=response.body().result.count
+                            notifyItemChanged(position)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ScrapResponse>?, t: Throwable?) {
+                        ApplicationController.instance!!.makeToast("서버상태를 확인해 주세요")
+                    }
+                })
+            }
+
         }
 //          댓글
         holder!!.comment.setOnClickListener{

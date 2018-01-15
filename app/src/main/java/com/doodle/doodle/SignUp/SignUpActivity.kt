@@ -118,13 +118,14 @@ class SignUpActivity : AppCompatActivity() {
             else{
                 try{
                     signup()
+                    startActivity(Intent(applicationContext,LoginActivity::class.java))
+                    finish()
 
                 } catch (e:Exception){
                     Toast.makeText(applicationContext,"프로필 사진을 지정해주세요",Toast.LENGTH_SHORT).show()
                     signup_button.isClickable=false
                 }
-                startActivity(Intent(applicationContext,LoginActivity::class.java))
-                finish()
+
             }
 
         }

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.doodle.doodle.Doodle_Comment.CommentActivity
 import com.doodle.doodle.Doodle_Others.OtherActivity
 import com.doodle.doodle.Doodle_Read.FeedList
 import com.doodle.doodle.Like.LikePost
@@ -27,6 +28,8 @@ class SingleActivity : AppCompatActivity() {
     private var requestManager: RequestManager? = null
     private var like:Int?=null
     private var scrap:Int?=null
+    private var id:Int?=null
+    private var comment_idx:Int?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,11 +83,18 @@ class SingleActivity : AppCompatActivity() {
             })
         }
 
+//        댓글
+        single_comment.setOnClickListener{
+            var intent =Intent(applicationContext, CommentActivity::class.java)
+            intent.putExtra("idx", comment_idx!!)
+            startActivity(intent)
+        }
+
 //        담아감
        single_scrap.setOnClickListener {
             //            통신 시작
             var scrapString: String? = null
-            if (scrap != null) {
+            if (scrap != 0) {
 //                flag=4는 scrap에 담겨 있는 글
                 scrapString = "unscrap"
             } else {
@@ -123,6 +133,7 @@ class SingleActivity : AppCompatActivity() {
                     } else {
                         requestManager!!.load(response.body().result.image).into(single_image)
                     }
+                    comment_idx=response.body().result.idx
                     single_date.text = response.body().result.created
                     single_likeCount.text = response.body().result.like_count.toString()
                     single_commentCount.text = response.body().result.comment_count.toString()

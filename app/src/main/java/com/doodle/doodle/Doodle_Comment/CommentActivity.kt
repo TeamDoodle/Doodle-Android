@@ -1,6 +1,7 @@
 package com.doodle.doodle.Doodle_Comment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
@@ -22,7 +23,6 @@ class CommentActivity : AppCompatActivity() ,SwipeRefreshLayout.OnRefreshListene
         swipe!!.isRefreshing=false
         init(idx!!)
     }
-
     private lateinit var commentDatas : ArrayList<CommentData>
     private var networkService: NetworkService? = null
     private var requestManager : RequestManager? = null
@@ -38,27 +38,17 @@ class CommentActivity : AppCompatActivity() ,SwipeRefreshLayout.OnRefreshListene
         setContentView(R.layout.activity_comment)
         swipe=findViewById(R.id.comment_swipe)
         swipe!!.setOnRefreshListener(this)
-        mainLayout.setOnClickListener {
-            val hide = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            hide.hideSoftInputFromWindow(mainLayout.windowToken, 0)
-        }
-        comment_recycler.setOnClickListener{
-            val hide = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            hide.hideSoftInputFromWindow(mainLayout.windowToken, 0)
-        }
 
         networkService = ApplicationController.instance!!.networkService
         requestManager = Glide.with(this)
 
         comment_recycler.layoutManager = LinearLayoutManager(this)
-        //리사이클러뷰의 패턴 지정
         comment_recycler.adapter = commentAdapter
 
         idx = intent.getIntExtra("idx", 0)
 
         Log.d("idx",idx.toString())
         init(idx!!)
-
 
         comment_postBtn.setOnClickListener{
             val commentPostResponse = networkService!!.postComment(getToken("token"), idx!!, PostCommentPost(comment_commentEt.text.toString()))
@@ -75,12 +65,10 @@ class CommentActivity : AppCompatActivity() ,SwipeRefreshLayout.OnRefreshListene
                             val hide = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                             hide.hideSoftInputFromWindow(mainLayout.windowToken, 0)
                             comment_commentEt.setText("")
-                            ApplicationController.instance!!.makeToast("작성 완료")
                             onRefresh()
 
 
                         } else {
-                            ApplicationController.instance!!.makeToast("작성 실패")
                         }
 
                     }
@@ -107,16 +95,21 @@ class CommentActivity : AppCompatActivity() ,SwipeRefreshLayout.OnRefreshListene
         commentResponse.enqueue(object : Callback<CommentResponse> {
 
             override fun onResponse(call: Call<CommentResponse>?, response: Response<CommentResponse>?) {
-                Log.d("success1",idx.toString())
 
                 if (response!!.isSuccessful) {
-                    Log.d("success",idx.toString())
                     if (response!!.body().message.equals("success")) {
-                        ApplicationController.instance!!.makeToast("작성 완료")
-                        comment_like_hit.text = response.body().result.doodle.like_count.toString()
-                        comment_comment_hit.text = response.body().result.doodle.comment_count.toString()
-                        comment_share_hit.text = response.body().result.doodle.scrap_count.toString()
-//                        requestManager!!.load(response.body().result.doodle.profile!!).into(comment_profile)
+                        if(response.body().result.doodle.profile==null){
+                            requestManager!!.load(R.drawable.profile).centerCrop().override(50,50).into(comment_profile)
+                        }else
+                        {
+                            requestManager!!.load(response.body().result.doodle.profile!!).into(comment_profile!!)
+                        }
+                        comment_nickname.text=response.body().result.doodle.nickname
+                        comment_date.text=response.body().result.doodle.created
+                        comment_like_hit.text=response.body().result.doodle.like_count.toString()
+                        comment_comment_hit.text=response.body().result.doodle.comment_count.toString()
+                        comment_share_hit.text=response.body().result.doodle.scrap_count.toString()
+
                         myCommentList = response.body().result.comments
                         commentAdapter = CommentAdapter(myCommentList!!,requestManager!!)
                         comment_recycler!!.adapter = commentAdapter

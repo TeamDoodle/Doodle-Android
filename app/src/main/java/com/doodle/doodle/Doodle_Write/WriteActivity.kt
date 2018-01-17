@@ -193,13 +193,14 @@ class WriteActivity : AppCompatActivity(), View.OnClickListener, View.OnLongClic
         }
 
         fun postpost() {
-
+        Log.d("fat","postpost()")
             val text = RequestBody.create(MediaType.parse("text/plain"), write_edit.text.toString())
             var postContent = networkService!!.post(getToken("token"), text, image!!)
             postContent.enqueue(object : Callback<PostResponse> {
                 override fun onResponse(call: Call<PostResponse>?, response: Response<PostResponse>?) {
                     if (response!!.isSuccessful) {
                         if (response!!.body().message.equals("success")) {
+                            Log.d("글작성 success","success")
                             ApplicationController.instance!!.makeToast("작성 완료")
                             finish()
                         } else {

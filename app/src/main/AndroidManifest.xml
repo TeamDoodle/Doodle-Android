@@ -22,6 +22,7 @@ zz
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Doodle_Write.WriteSplashActivity"></activity>
         <activity android:name=".Doodle_Write.WriteActivity" />
         <activity android:name=".Doodle_Me.FeedActivity" />
         <activity android:name=".SignUp.SignUpActivity" />

@@ -1,10 +1,10 @@
 package com.doodle.doodle.Doodle_Me
 
 /**
- * Created by Jinyoung on 2018-01-13.
+ * Created by Jinyoung on 2018-01-17.
  */
 data class GetProfileResponse (
-        var status:String,
+        var status:Int,
         var message:String,
         var result:GetProfileData
 )

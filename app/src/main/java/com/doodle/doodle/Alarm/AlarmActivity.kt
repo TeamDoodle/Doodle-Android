@@ -13,12 +13,14 @@ import com.doodle.doodle.Main.MainActivity
 import com.doodle.doodle.Network.ApplicationController
 import com.doodle.doodle.Network.NetworkService
 import com.doodle.doodle.R
-import kotlinx.android.synthetic.main.activity_alarm.*
+import com.doodle.doodle.R.id.main_alarm
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class AlarmActivity : AppCompatActivity() {
+
     private var alarmRecyclerViewNew: RecyclerView? = null
     private var alarmRecyclerViewOld: RecyclerView? = null
     private var linearLayoutManagerNew: LinearLayoutManager? = null
@@ -72,7 +74,7 @@ class AlarmActivity : AppCompatActivity() {
         alarmRecyclerViewOld!!.adapter = alarmAdapterOld
 
         networking()
-        main_alarm.setOnClickListener { startActivity(Intent(applicationContext,MainActivity::class.java)) }
+        main_alarm.setOnClickListener { startActivity(Intent(applicationContext, MainActivity::class.java)) }
     }
 
     fun networking() {

@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bgopacity"
-    tools:context="com.doodle.doodle.Doodle_Read.AppreciateActivity">
-
+    tools:context="com.real.doodle.Doodle_Read.AppreciateActivity">
     <LinearLayout
+        android:background="@drawable/bgopacity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical">
@@ -27,16 +27,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="감상하기" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/search"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/appreciate_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp" />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-         <ImageView
-             android:layout_marginRight="20dp"
-             android:layout_alignParentRight="true"
-             android:id="@+id/appreciate_search"
-             android:src="@drawable/search"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
+                <ImageView
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/appreciate_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp" />
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
 
@@ -50,9 +71,9 @@
         android:background="#707070"
         android:layout_width="match_parent"
         android:layout_height="1dp">
-
     </View>
     <LinearLayout
+        android:background="@drawable/bgopacity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -84,21 +105,24 @@
 
     </LinearLayout>
     <LinearLayout
+        android:background="@drawable/dayfeelinglayer"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <!--뷰페이저 시작-->
-        <com.doodle.doodle.Doodle_Read.SwipeViewPager
-            android:background="@drawable/dayfeelinglayer"
+        <com.real.doodle.Doodle_Read.SwipeViewPager
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/appreciate_viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="3dp"
-            android:layout_marginLeft="3dp"
+
             >
 
-        </com.doodle.doodle.Doodle_Read.SwipeViewPager>
+        </com.real.doodle.Doodle_Read.SwipeViewPager>
 
 
     </LinearLayout>

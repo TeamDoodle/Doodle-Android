@@ -7,7 +7,7 @@
     android:orientation="vertical">
     <ImageView
         android:id="@+id/feedImage"
-        android:src="@drawable/mytext2"
+        android:src="@drawable/mytext1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"/>

@@ -5,15 +5,13 @@
     android:layout_height="wrap_content">
 <RelativeLayout
     android:layout_marginTop="16dp"
-    android:layout_marginLeft="20dp"
     android:layout_width="60dp"
     android:layout_height="60dp"
     android:layout_marginBottom="20dp">
+
     <ImageView
-        android:src="@drawable/frame4040"
-        android:layout_width="52dp"
-        android:layout_height="52dp" />
-    <ImageView
+        android:scaleType="centerCrop"
+        android:background="@drawable/frame1"
         android:src="@drawable/userprofile"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="1dp"
@@ -30,7 +28,7 @@
         android:orientation="vertical"
         >
         <TextView
-            android:fontFamily="@font/nanum_myeongjo_extra_bold"
+            android:textStyle="bold"
             android:id="@+id/comment_item_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

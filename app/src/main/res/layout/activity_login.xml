@@ -12,7 +12,7 @@
             android:id="@+id/login_text"
             android:layout_marginTop="88dp"
             android:layout_marginLeft="50dp"
-            android:fontFamily="@font/nanum_myeongjo_extra_bold"
+            android:textStyle="bold"
             android:textSize="16dp"
             android:textColor="#445061"
             android:text="로그인"
@@ -28,6 +28,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:layout_marginLeft="23dp"
+                    android:textSize="10sp"
                     android:singleLine="true"
                     android:layout_alignBottom="@+id/email"
                     android:layout_toRightOf="@+id/email"
@@ -52,6 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
+                    android:layout_marginLeft="15dp"
+                    android:textSize="10sp"
                     android:singleLine="true"
                     android:layout_toRightOf="@+id/password"
                     android:layout_alignBottom="@+id/password"
@@ -73,16 +77,16 @@
     </RelativeLayout>
 
     <ImageView
-        android:src="@drawable/loginbutton"
+        android:src="@drawable/confirm"
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="170dp"
         android:layout_gravity="center"
         />
 
     <TextView
-        android:fontFamily="@font/nanum_myeongjo_extra_bold"
+        android:textStyle="bold"
         android:padding="10dp"
         android:id="@+id/goto_signup"
         android:layout_width="wrap_content"

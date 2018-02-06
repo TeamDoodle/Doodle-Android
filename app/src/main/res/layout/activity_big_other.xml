@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="@drawable/bgopacity"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,11 +16,12 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"
             android:id="@+id/big_back"
-            android:layout_width="12dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="11dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/back" />
 
     </LinearLayout>
@@ -35,32 +37,48 @@
     <!--커스텀 액션바 끝-->
 
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
+        android:orientation="horizontal"
         android:focusableInTouchMode="true"
         android:descendantFocusability="beforeDescendants"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <ImageView
+            android:scaleType="centerCrop"
+            android:background="@drawable/frame1"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"/>
 
         <ImageView
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/frame1"
+            android:layout_marginLeft="26.5dp"
+            android:layout_marginTop="18.5dp"
             android:id="@+id/big_other_profile"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
         <TextView
-            android:layout_marginTop="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="45dp"
+            android:layout_toRightOf="@id/big_other_profile"
             android:id="@+id/big_other_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:text="필명"/>
 
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:background="@drawable/dayfeelinglayer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
+            android:layout_margin="10dp"
             android:id="@+id/big_other_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -68,6 +86,7 @@
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
+
 
 
 

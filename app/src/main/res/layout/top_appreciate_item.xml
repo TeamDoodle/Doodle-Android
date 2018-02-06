@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginTop="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-            android:layout_marginTop="18dp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -34,12 +32,13 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/mytext2" />
+        android:src="@drawable/mytext1" />
 
     <RelativeLayout
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -97,8 +96,8 @@
 
     </RelativeLayout>
 <View
-    android:background="#445061"
-    android:layout_marginTop="10dp"
+    android:layout_marginBottom="18dp"
+    android:background="#80445061"
     android:layout_width="match_parent"
-    android:layout_height="0.7dp"></View>
+    android:layout_height="2dp"></View>
 </LinearLayout>

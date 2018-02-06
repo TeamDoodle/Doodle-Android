@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginTop="18dp"
     android:layout_marginBottom="20dp"
     android:orientation="vertical">
 <RelativeLayout
@@ -24,8 +23,7 @@
 
 </RelativeLayout>
     <ImageView
-        android:layout_marginTop="18dp"
-        android:src="@drawable/mytext3"
+        android:src="@drawable/mytext1"
         android:id="@+id/appreciate_postImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

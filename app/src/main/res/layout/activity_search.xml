@@ -4,16 +4,78 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context="com.doodle.doodle.Doodle_Search.SearchActivity">
-
+    tools:context="com.real.doodle.Doodle_Search.SearchActivity">
+    <!--커스텀 액션바-->
     <LinearLayout
+        android:background="@drawable/basicbg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#445061"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="검색" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/search_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="10dp"
+                    android:layout_marginLeft="20dp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">  </View>
+    <View
+        android:layout_marginTop="2dp"
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+    <RelativeLayout
+        android:gravity="center_vertical"
         android:weightSum="10"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#FFFFFF">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/basicbg">
 
         <EditText
-            android:layout_weight="9"
+            android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="검색어를 입력해주세요."
@@ -25,6 +87,10 @@
             android:id="@+id/search_keyword"/>
 
         <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
             android:id="@+id/cancle"
             android:text="취소"
             android:textStyle="bold"
@@ -32,10 +98,9 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="19dp"/>
+            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    </RelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -43,10 +108,13 @@
         android:layout_marginHorizontal="10dp"
         />
     <LinearLayout
+        android:background="@drawable/basicbg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <android.support.design.widget.TabLayout
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/search_tabLayout">
@@ -63,6 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/search_viewPager"
+            android:background="@drawable/dayfeelinglayer"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp">

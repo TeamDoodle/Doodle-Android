@@ -6,33 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.doodle.doodle.Alarm.AlarmActivity">
+    android:background="@drawable/basicbg"
+    tools:context="com.real.doodle.Alarm.AlarmActivity">
 
 
     <!--커스텀 액션바-->
+    <!--커스텀 액션바-->
     <LinearLayout
+        android:background="@drawable/basicbg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="vertical">
-
         <RelativeLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center"
             android:orientation="vertical">
-
             <RelativeLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
+                android:layout_height="wrap_content">
                 <TextView
+                    android:textColor="#445061"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="알림"
-                    android:textColor="#445061"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:text="알림" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             </RelativeLayout>
 
@@ -41,13 +46,14 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/main_alarm"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/alarm_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="30dp"
-                    android:src="@drawable/back" />
+                    android:layout_marginLeft="10dp" />
 
             </RelativeLayout>
 
@@ -55,18 +61,16 @@
         </RelativeLayout>
 
     </LinearLayout>
-
     <View
+        android:background="#707070"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#707070"></View>
-
+        android:layout_height="1dp">  </View>
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
         android:layout_marginTop="2dp"
-        android:background="#707070"></View>
-
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -82,19 +86,20 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/new_alarm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_myeongjo_extra_bold"
                     android:text="새 알림"
                     android:textColor="#445061"
                     android:textSize="16sp"
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="25dp"
-                    android:textStyle="bold"
                     android:layout_marginBottom="28dp"
                     />
 
                 <android.support.v7.widget.RecyclerView
+                    android:layout_marginLeft="24dp"
                     android:id="@+id/alarm_recycler_new"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -110,25 +115,27 @@
                 android:orientation="vertical">
 
                 <View
+                    android:layout_marginTop="25dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#80707070"
                     />
 
                 <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/last_alarm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_myeongjo_extra_bold"
                     android:text="이전 알림"
                     android:textColor="#445061"
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginBottom="25dp"
                     />
 
                 <android.support.v7.widget.RecyclerView
+                    android:layout_marginLeft="24dp"
                     android:id="@+id/alarm_recycler_old"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

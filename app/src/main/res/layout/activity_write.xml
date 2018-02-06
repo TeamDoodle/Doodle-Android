@@ -7,63 +7,79 @@
     android:layout_height="match_parent"
     android:background="@drawable/bgopacity"
     android:orientation="vertical"
-    tools:context="com.doodle.doodle.Doodle_Write.WriteActivity">
+    tools:context="com.real.doodle.Doodle_Write.WriteActivity">z
+    <!--커스텀 액션바-->
     <!--커스텀 액션바-->
     <LinearLayout
+        android:background="@drawable/basicbg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/bgopacity"
         android:orientation="vertical">
-
         <RelativeLayout
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center"
             android:orientation="vertical">
-
             <RelativeLayout
+                android:gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/write_commit"
+                    android:text="완료"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
                     android:text="글 작성"
                     android:textColor="#445061"
                     android:textSize="18dp"
                     android:textStyle="bold" />
-
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/write_commit"
+                <ImageView
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/write_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
-                    android:text="완료" />
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp" />
+
             </RelativeLayout>
+
 
         </RelativeLayout>
 
     </LinearLayout>
-
     <View
+        android:background="#707070"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#707070"></View>
-
+        android:layout_height="1dp">  </View>
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
         android:layout_marginTop="2dp"
-        android:background="#707070"></View>
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
     <!--사진 넣는 부분-->
     <!--나중에 height=fill_parent로 바꾸기-->
     <RelativeLayout
@@ -77,8 +93,7 @@
         <ImageView
             android:id="@+id/write_image"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/writingbg" />
+            android:layout_height="match_parent"/>
 
         <ImageView
             android:id="@+id/filter"
@@ -463,7 +478,6 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="10dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@assets/nanum_barun_gothic"
                                         android:text="나눔바른"
                                         android:textSize="11sp" />
 
@@ -473,7 +487,7 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/nanum_myeongjo"
+                                        android:fontFamily="@assets/nanum_myeongjo"
                                         android:text="나눔명조"
                                         android:textSize="11sp" />
 
@@ -483,7 +497,7 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/nanum_brush"
+                                        android:fontFamily="@assets/nanum_brush"
                                         android:text="나눔손글씨"
                                         android:textSize="12sp" />
 
@@ -493,7 +507,7 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/goyang"
+                                        android:fontFamily="@assets/goyang"
                                         android:text="고양체"
                                         android:textSize="12sp" />
 
@@ -503,7 +517,7 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/tvn_medium"
+                                        android:fontFamily="@assets/tvn_medium"
                                         android:text="티비엔"
                                         android:textSize="13sp" />
 
@@ -513,7 +527,7 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/bmsoyoung_ttf"
+                                        android:fontFamily="@assets/bmsoyoung_ttf"
                                         android:text="배민체"
                                         android:textSize="13sp" />
 
@@ -524,7 +538,7 @@
                                         android:layout_marginLeft="8dp"
                                         android:layout_marginTop="2dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/unbee"
+                                        android:fontFamily="@assets/unbee"
                                         android:text="어비체"
                                         android:textSize="13sp" />
                                 </LinearLayout>
@@ -695,7 +709,9 @@
         </LinearLayout>
     </LinearLayout>
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/popup"
         android:layout_width="match_parent"
@@ -707,10 +723,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_myeongjo_extra_bold"
+            android:fontFamily="@font/nanum_myeongjo"
             android:text="나의 글이 저장되었습니다."
             android:textColor="#ffffff" />
     </LinearLayout>
+</RelativeLayout>
 
 
 </LinearLayout>

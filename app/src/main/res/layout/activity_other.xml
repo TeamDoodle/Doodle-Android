@@ -1,61 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="@drawable/bgopacity"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.doodle.doodle.Doodle_Others.OtherActivity">
-
+    tools:context="com.real.doodle.Doodle_Others.OtherActivity">
     <!--커스텀 액션바-->
     <LinearLayout
         android:background="@drawable/bgopacity"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="5dp"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/otherfeed_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
 
     </LinearLayout>
     <View
+        android:background="#707070"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#707070" />
+        android:layout_height="1dp">  </View>
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
         android:layout_marginTop="2dp"
-        android:background="#707070" />
-    <!--커스텀 액션바 끝-->
-
+        android:background="#707070"
+        android:layout_width="match_parent"
+        android:layout_height="1dp">
+    </View>
+<LinearLayout
+    android:background="@drawable/bgopacity"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_height="wrap_content">
         <ImageView
+            android:background="@drawable/frame1"
+            android:scaleType="centerCrop"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="22dp"/>
+        <ImageView
+            android:background="@drawable/frame1"
+            android:scaleType="centerCrop"
             android:id="@+id/other_profile"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:layout_marginLeft="25.3dp"
+            android:layout_marginTop="25.1dp"/>
 
-        <ImageView
-            android:layout_width="73dp"
-            android:layout_height="73dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/frame5454"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="16dp"
             android:orientation="vertical"
             android:layout_toRightOf="@id/other_profile">
             <TextView
                 android:textColor="#464646"
-                android:fontFamily="@font/nanum_myeongjo_extra_bold"
+                android:textStyle="bold"
                 android:id="@+id/other_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,26 +105,34 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:fontFamily="@font/nanum_myeongjo"
+                >
                 <TextView
                     android:textColor="#464646"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:text="감성 "/>
+                    android:text="감성 "
+                    android:fontFamily="@font/nanum_myeongjo"
+                    />
                 <TextView
                     android:textColor="#464646"
                     android:id="@+id/other_posting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
-                    android:text="29"/>
+                    android:text="29"
+                    android:fontFamily="@font/nanum_myeongjo"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -92,14 +141,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="담아감 "/>
+                        android:text="담아감 "
+                        android:fontFamily="@font/nanum_myeongjo"
+                        />
                     <TextView
                         android:textColor="#464646"
                         android:id="@+id/other_scrap"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:text="823"/>
+                        android:text="823"
+                        android:fontFamily="@font/nanum_myeongjo"
+                        />
 
 
                 </LinearLayout>
@@ -113,26 +166,31 @@
             android:id="@+id/other_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="24dp"
             android:layout_below="@id/other_profile"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:textSize="12sp"
-            android:text="'당신의 끄적임이 글이 되는 곳'"/>
+            android:text="'당신의 끄적임이 글이 되는 곳'"
+            />
 
     </RelativeLayout>
     <FrameLayout
+        android:layout_marginTop="16dp"
         android:id="@+id/other_frame"
-        android:layout_marginRight="3dp"
-        android:layout_marginLeft="3dp"
         android:background="@drawable/dayfeelinglayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/other_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
     </FrameLayout>
+</LinearLayout>
+
 
 </LinearLayout>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.doodle.doodle">
+    package="com.real.doodle">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-zz
+
     <application
         android:name=".Network.ApplicationController"
         android:allowBackup="true"
@@ -22,14 +22,19 @@ zz
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Doodle_Write.WriteSplashActivity"></activity>
+        <activity android:name=".Tutorial.Tutorial1" />
+        <activity android:name=".Tutorial.Tutorial2" />
+        <activity android:name=".Tutorial.Tutorial3" />
+        <activity android:name=".Tutorial.Tutorial4" />
+        <activity android:name=".Tutorial.Tutorial5" />
+        <activity android:name=".Tutorial.Tutorial6" />
         <activity android:name=".Doodle_Write.WriteActivity" />
+        <activity android:name=".Doodle_Write.BeforeWriteActivity"/>
         <activity android:name=".Doodle_Me.FeedActivity" />
         <activity android:name=".SignUp.SignUpActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".Doodle_Me.MyfeedBigActivity" />
-        <activity android:name=".Tutorial.SelectActivity" />
         <activity android:name=".Doodle_Books.BookActivity" />
         <activity android:name=".Doodle_Books.DoodleBookOneActivity" />
         <activity android:name=".Doodle_Books.DoodleBookTwoActivity" />
@@ -38,7 +43,6 @@ zz
         <activity android:name=".Alarm.AlarmActivity" />
         <activity android:name=".Settings.SettingActivity" />
         <activity android:name=".Doodle_Single.SingleActivity" />
-        <activity android:name=".Tutorial.TutorialActivity" />
         <activity android:name=".Doodle_Read.AppreciateActivity" />
         <activity android:name=".Doodle_Comment.CommentActivity" />
         <activity android:name=".Doodle_Me.ProfileActivity" />

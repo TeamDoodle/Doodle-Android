@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="60dp"
-            android:fontFamily="@font/nanum_myeongjo_extra_bold"
+            android:textStyle="bold"
             android:text="회원 가입"
             android:textColor="#445061"
             android:textSize="16sp" />
@@ -32,12 +32,10 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <ImageView
-                android:src="@drawable/frame4444"
-                android:layout_width="104dp"
-                android:layout_height="104dp" />
+
             <ImageView
                 android:src="@drawable/profile"
+                android:background="@drawable/frame1"
                 android:id="@+id/signup_profile"
                 android:layout_width="104dp"
                 android:layout_height="104dp"
@@ -299,7 +297,7 @@
                 android:textSize="12sp"
                 android:layout_marginTop="75dp"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/nanum_myeongjo_extra_bold"
+                android:textStyle="bold"
                 android:textColor="#464646"
                 />
         </RelativeLayout>

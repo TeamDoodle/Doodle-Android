@@ -37,14 +37,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:src="@drawable/back"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/main_alarm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="30dp" />
 
             </RelativeLayout>
 
@@ -79,7 +71,7 @@
     <ImageView
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/frame4444"
+        android:src="@drawable/angae"
         android:layout_width="63dp"
         android:layout_height="63dp" />
     <RelativeLayout
@@ -92,7 +84,7 @@
             android:id="@+id/comment_profile"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:src="@drawable/userprofile" />
+            android:src="@drawable/font_uhbee" />
     </RelativeLayout>
 
 </RelativeLayout>

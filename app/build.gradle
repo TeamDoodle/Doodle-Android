@@ -38,4 +38,4 @@ dependencies {
     compile "me.leolin:ShortcutBadger:1.1.19@aar"
 }
 
-apply plugin: 'com.google.gms.google-services'
+

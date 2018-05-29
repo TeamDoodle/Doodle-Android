@@ -74,18 +74,20 @@
         android:layout_height="1dp">
     </View>
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
+            android:layout_weight="1"
             android:id="@+id/main_write"
             android:layout_width="match_parent"
-            android:layout_height="142dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:gravity="center"
                 android:id="@+id/write_linear"
                 android:orientation="vertical"
-                android:background="@drawable/m1off"
+                android:background="@drawable/main1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -106,15 +108,16 @@
                 android:layout_height="20dp"></View>
         </RelativeLayout>
         <RelativeLayout
+            android:layout_weight="1"
             android:id="@+id/main_read"
             android:layout_below="@+id/main_write"
             android:layout_width="match_parent"
-            android:layout_height="142dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:gravity="center"
                 android:id="@+id/read_linear"
                 android:orientation="vertical"
-                android:background="@drawable/m2off"
+                android:background="@drawable/main2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -136,15 +139,16 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_weight="1"
             android:id="@+id/main_myfeed"
             android:layout_below="@+id/main_read"
             android:layout_width="match_parent"
-            android:layout_height="142dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:gravity="center"
                 android:id="@+id/myfeed_linear"
                 android:orientation="vertical"
-                android:background="@drawable/m3off"
+                android:background="@drawable/main3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -165,15 +169,16 @@
                 android:layout_height="20dp"></View>
         </RelativeLayout>
         <RelativeLayout
+            android:layout_weight="1"
             android:id="@+id/main_books"
             android:layout_below="@+id/main_myfeed"
             android:layout_width="match_parent"
-            android:layout_height="142dp">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:gravity="center"
                 android:id="@+id/books_linear"
                 android:orientation="vertical"
-                android:background="@drawable/m4off"
+                android:background="@drawable/main4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -194,7 +199,7 @@
                 android:layout_height="20dp"></View>
         </RelativeLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -554,7 +554,6 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/goyang"
                                         android:text="고양체"
                                         android:textSize="12sp" />
 
@@ -564,7 +563,6 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/tvn_medium"
                                         android:text="티비엔"
                                         android:textSize="13sp" />
 
@@ -574,7 +572,6 @@
                                         android:layout_height="25dp"
                                         android:layout_marginLeft="8dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/bmsoyoung_ttf"
                                         android:text="배민체"
                                         android:textSize="13sp" />
 
@@ -585,7 +582,6 @@
                                         android:layout_marginLeft="8dp"
                                         android:layout_marginTop="2dp"
                                         android:background="@drawable/font_button"
-                                        android:fontFamily="@font/unbee"
                                         android:text="어비체"
                                         android:textSize="13sp" />
                                 </LinearLayout>

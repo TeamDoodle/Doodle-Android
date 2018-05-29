@@ -23,7 +23,6 @@ class OrderActivity : AppCompatActivity() {
             }
             2->{
                 order_title.text="글적 제 2권"
-                order_btn.setImageResource(R.drawable.order2)
             }
         }
     }

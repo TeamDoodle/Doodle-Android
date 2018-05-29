@@ -14,12 +14,7 @@
         android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="12dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="11dp"
-            android:src="@drawable/back" />
+
 
     </LinearLayout>
     <View

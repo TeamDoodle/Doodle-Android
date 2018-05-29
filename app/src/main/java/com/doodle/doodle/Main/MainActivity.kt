@@ -21,26 +21,26 @@ class MainActivity : AppCompatActivity() {
 
 //        글 작성
         write_linear.setOnClickListener {
-            write_linear.setBackgroundResource(R.drawable.m1on)
+//            write_linear.setBackgroundResource(R.drawable.m1on)
             startActivity(Intent(applicationContext,WriteActivity::class.java))
 
         }
 
 //        감상 하기
         read_linear.setOnClickListener{
-            read_linear.setBackgroundResource(R.drawable.m2on)
+//            read_linear.setBackgroundResource(R.drawable.m2on)
             startActivity(Intent(applicationContext,AppreciateActivity::class.java))
         }
 
 //        나의 글
         myfeed_linear.setOnClickListener {
-            myfeed_linear.setBackgroundResource(R.drawable.m3on)
+//            myfeed_linear.setBackgroundResource(R.drawable.m3on)
             startActivity(Intent(applicationContext, FeedActivity::class.java))
         }
 
 //        글적 서적
         books_linear.setOnClickListener {
-            books_linear.setBackgroundResource(R.drawable.m4on)
+//            books_linear.setBackgroundResource(R.drawable.m4on)
             startActivity(Intent(applicationContext,BookActivity::class.java))
         }
 
@@ -53,9 +53,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        write_linear.setBackgroundResource(R.drawable.m1off)
-        read_linear.setBackgroundResource(R.drawable.m2off)
-        myfeed_linear.setBackgroundResource(R.drawable.m3off)
-        books_linear.setBackgroundResource(R.drawable.m4off)
+//        write_linear.setBackgroundResource(R.drawable.m1off)
+//        read_linear.setBackgroundResource(R.drawable.m2off)
+//        myfeed_linear.setBackgroundResource(R.drawable.m3off)
+//        books_linear.setBackgroundResource(R.drawable.m4off)
     }
 }

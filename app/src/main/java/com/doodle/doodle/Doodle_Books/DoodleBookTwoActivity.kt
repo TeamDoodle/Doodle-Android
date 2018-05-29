@@ -12,13 +12,6 @@ class DoodleBookTwoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doodle_book_two)
 
-        book2_back.setOnClickListener{
-            finish()
-        }
-        doodle_book_two.setOnClickListener{
-            var intent = Intent(this, OrderActivity::class.java)
-            intent.putExtra("flag", 2 )
-            this.startActivity(intent)
-        }
+
     }
 }
